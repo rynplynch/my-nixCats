@@ -152,6 +152,7 @@
             vim-repeat
             plenary-nvim
             nvim-notify
+            neogit
           ];
           extra = [
             oil-nvim
