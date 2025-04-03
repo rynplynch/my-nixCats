@@ -128,6 +128,10 @@
           go-tools
           gccgo
         ];
+        csharp = with pkgs; [
+          dotnetCorePackages.dotnet_8.sdk
+          csharp-ls
+        ];
         # and easily check if they are included in lua
         format = with pkgs; [
           alejandra
