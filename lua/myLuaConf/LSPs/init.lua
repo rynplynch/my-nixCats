@@ -49,6 +49,21 @@ require('lze').load {
     end,
   },
   {
+    "roslyn.nvim",
+    for_cat = "neonixdev",
+    cmd = { "Rosyln" },
+    ft = "cs",
+    after = function(_)
+      require('roslyn').setup({
+        exe = 'Microsoft.CodeAnalysis.LanguageServer',
+        config = {
+          capabilities = require('myLuaConf.LSPs.caps-on_attach').get_capabilities("roslyn-ls"),
+          on_attach = require('myLuaConf.LSPs.caps-on_attach').on_attach,
+        },
+      })
+    end,
+  },
+  {
     -- name of the lsp
     "lua_ls",
     enabled = nixCats('lua') or nixCats('neonixdev'),
