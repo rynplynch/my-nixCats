@@ -374,6 +374,7 @@
           lint = true;
           format = true;
           neonixdev = true;
+          csharp = true;
           test = {
             subtest1 = true;
           };
