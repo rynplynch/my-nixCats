@@ -129,8 +129,7 @@
           gccgo
         ];
         csharp = with pkgs; [
-          dotnetCorePackages.dotnet_8.sdk
-          csharp-ls
+          roslyn-ls
         ];
         # and easily check if they are included in lua
         format = with pkgs; [
@@ -209,6 +208,7 @@
         ];
         neonixdev = with pkgs.vimPlugins; [
           lazydev-nvim
+          roslyn-nvim
         ];
         general = {
           cmp = with pkgs.vimPlugins; [
