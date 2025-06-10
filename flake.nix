@@ -5,7 +5,7 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   inputs.nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
-  outputs = { self, nixpkgs, nixCats}@inputs:
+  outputs = { self, nixpkgs, nixCats }@inputs:
     let
 
       # to work with older version of flakes
@@ -28,9 +28,7 @@
     {
 
       # A Nixpkgs overlay.
-      overlay = final: prev: {
-
-      };
+      overlay = final: prev: { };
 
       # Provide some binary packages for selected system types.
     packages = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all (system: let

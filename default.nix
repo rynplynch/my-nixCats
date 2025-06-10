@@ -1,10 +1,10 @@
-{
-  pkgs ? import <nixpkgs> {}
-  , nixCats ? builtins.fetchGit {
+{ pkgs ? import <nixpkgs> { }
+, nixCats ? builtins.fetchGit {
     url = "https://github.com/BirdeeHub/nixCats-nvim";
   }
-  , ...
-}: let
+, ...
+}:
+let
   # get the nixCats library with the builder function (and everything else) in it
   utils = import nixCats;
   # path to your new .config/nvim
@@ -61,7 +61,7 @@
     # These are the names of your packages
     # you can include as many as you wish.
     # each of these sets are also written into the nixCats plugin for querying within lua.
-    nvim = {pkgs, name, mkPlugin, ... }: {
+    nvim = { pkgs, name, mkPlugin, ... }: {
       settings = {
         suffix-path = true;
         suffix-LD = true;
@@ -80,15 +80,16 @@
         general = true;
       };
       # anything else to pass and grab in lua with `nixCats.extra`
-      extra = {};
+      extra = { };
     };
   };
 
   # We will build the one named nvim here and export that one.
   defaultPackageName = "nvim";
 
-# return our package!
-in utils.baseBuilder luaPath { inherit pkgs; } categoryDefinitions packageDefinitions defaultPackageName
+  # return our package!
+in
+utils.baseBuilder luaPath { inherit pkgs; } categoryDefinitions packageDefinitions defaultPackageName
 # NOTE: or to return a set of all of them:
 # `in utils.mkAllPackages (utils.baseBuilder luaPath { inherit pkgs; } categoryDefinitions packageDefinitions defaultPackageName)`
 
