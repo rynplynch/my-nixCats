@@ -42,7 +42,7 @@
 
       devShells = forAllSystems (system:
         {
-          default = import ./shell.nix { pkgs = nixpkgsFor.${system}; };
+          default = import ./shell.nix { inherit self system; pkgs = nixpkgsFor.${system}; };
         });
 
       # A NixOS module, if applicable (e.g. if the package provides a system service).
