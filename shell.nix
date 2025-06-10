@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> { }
-,
+, self
+, system
 }:
 with pkgs; mkShell {
   buildInputs = [
