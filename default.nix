@@ -32,6 +32,7 @@ let
         mini-icons
         mini-pairs
         nvim-lspconfig
+        neogit
         vim-startuptime
         blink-cmp
         nvim-treesitter.withAllGrammars
