@@ -31,31 +31,18 @@
       overlay = final: prev: { };
 
       # Provide some binary packages for selected system types.
-    packages = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all (system: let
-        pkgs = import nixpkgs { inherit system; overlays = []; config = {}; };
-
-    in nixCats.utils.mkAllWithDefault (import ./. (inputs // { inherit pkgs; })));
       # The default package for 'nix build'. This makes sense if the
       # flake provides only one package or there is a clear "main"
       # package.
-      defaultPackage = forAllSystems (system: self.packages.${system}.default.nixosModule);
+      packages = forAllSystems (system:
+        nixCats.utils.mkAllWithDefault (import ./default.nix (inputs // { inherit (nixpkgsFor.${system}) pkgs; }))
+      );
+
+      defaultPackage = forAllSystems (system: self.packages.${system}.default);
 
       devShells = forAllSystems (system:
         {
           default = import ./shell.nix { inherit self system; pkgs = nixpkgsFor.${system}; };
         });
-
-      # A NixOS module, if applicable (e.g. if the package provides a system service).
-      nixosModules.hello =
-        { pkgs, ... }:
-        {
-          nixpkgs.overlays = [ self.overlay ];
-
-          environment.systemPackages = [ pkgs.hello ];
-
-          #systemd.services = { ... };
-        };
-
-
     };
 }
