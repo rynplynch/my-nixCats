@@ -42,7 +42,7 @@
 
       devShells = forAllSystems (system:
         {
-          default = import ./shell.nix { inherit self system; pkgs = nixpkgsFor.${system}; };
+          default = import ./shell.nix { inherit nixCats self system; pkgs = nixpkgsFor.${system}; };
         });
     };
 }
