@@ -83,6 +83,26 @@ let
       # anything else to pass and grab in lua with `nixCats.extra`
       extra = { };
     };
+
+    minimal-vim = { pkgs, name, mkPlugin, ... }: {
+      settings = {
+        wrapRc = true;
+        suffix-path = true;
+        suffix-LD = true;
+        # see :help nixCats.flake.outputs.settings
+        # IMPORTANT:
+        # your aliases may not conflict with other packages.
+        aliases = [ "nvim" ];
+        hosts.python3.enable = false;
+        hosts.node.enable = false;
+        hosts.ruby.enable = false;
+        hosts.perl.enable = false;
+      };
+      categories = {
+        general = false;
+        lua-dev = false;
+      };
+    };
   };
 
   # We will build the one named nvim here and export that one.
