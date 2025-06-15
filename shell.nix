@@ -1,4 +1,5 @@
 { pkgs ? import <nixpkgs> { }
+, nixCats
 , self
 , system
 }:
