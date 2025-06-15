@@ -10,7 +10,11 @@ with pkgs; let
       categoryDefinitions = nixCats.utils.mergeCatDefs prev.categoryDefinitions ({ pkgs, settings, categories, name, extra, mkPlugin, ... }@packageDef: {
         optionalLuaAdditions = {
           newcat =
+            let
+              newDir = "/home/ryanl/git-repos/my-nixCats";
+            in
               /*lua*/''
+              local newCfgDir = [[${newDir}]]
             '';
         };
       });
