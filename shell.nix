@@ -2,9 +2,14 @@
 , self
 , system
 }:
-with pkgs; mkShell {
+with pkgs; let
+  customNixCats =
+    (self.packages.${system}.default.override (prev: {
+    }));
+in
+mkShell {
   buildInputs = [
-    self.packages.${system}.default
+    customNixCats
     nixpkgs-fmt
   ];
 
