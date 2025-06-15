@@ -29,6 +29,9 @@ with pkgs; let
       });
       packageDefinitions = prev.packageDefinitions // {
         minimal-vim = nixCats.utils.mergeCatDefs prev.packageDefinitions.nvim ({ pkgs, ... }: {
+          settings = {
+            wrapRc = false;
+          };
           categories = {
             newcat = true;
           };
