@@ -15,6 +15,9 @@ with pkgs; let
             in
               /*lua*/''
               local newCfgDir = [[${newDir}]]
+              vim.opt.packpath:prepend(newCfgDir)
+              vim.opt.runtimepath:prepend(newCfgDir)
+              vim.opt.runtimepath:append(newCfgDir .. "/after")
             '';
         };
       });
