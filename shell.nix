@@ -10,6 +10,8 @@ with pkgs; let
       categoryDefinitions = nixCats.utils.mergeCatDefs prev.categoryDefinitions ({ pkgs, settings, categories, name, extra, mkPlugin, ... }@packageDef: {
         optionalLuaAdditions = {
           newcat =
+              /*lua*/''
+            '';
         };
       });
       packageDefinitions = prev.packageDefinitions // {
