@@ -33,6 +33,8 @@ with pkgs; let
             wrapRc = false;
           };
           categories = {
+            general = false;
+            lua-dev = false;
             newcat = true;
           };
         });
