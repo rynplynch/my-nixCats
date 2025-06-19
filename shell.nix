@@ -9,7 +9,7 @@ with pkgs; let
       name = "minimal-vim";
       categoryDefinitions = nixCats.utils.mergeCatDefs prev.categoryDefinitions ({ pkgs, settings, categories, name, extra, mkPlugin, ... }@packageDef: {
         optionalLuaAdditions = {
-          newcat =
+          nix-build-bypass =
             let
               newDir = "/home/ryanl/git-repos/my-nixCats";
             in
