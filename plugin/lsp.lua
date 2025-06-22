@@ -1,6 +1,3 @@
-if not nixCats('general') then
-  return
-end
 -- NOTE: lsp setup via lspconfig
 
 local servers = {}
@@ -10,6 +7,7 @@ local servers = {}
 -- servers.html = {}
 
 -- but you can provide some if you want to!
+if nixCats('lua') then
 servers.lua_ls = {
   settings = {
     Lua = {
