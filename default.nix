@@ -35,6 +35,9 @@ let
         nvim-lspconfig
         blink-cmp
       ];
+      git-tools = with pkgs.vimPlugins; [
+        neogit
+      ];
       general = with pkgs.vimPlugins; [
         snacks-nvim
         onedark-nvim
@@ -43,7 +46,6 @@ let
         mini-icons
         mini-pairs
         nvim-lspconfig
-        neogit
         vim-startuptime
         nvim-treesitter.withAllGrammars
         lualine-nvim
@@ -90,6 +92,7 @@ let
       categories = {
         # defaults for categories that all editor version will use
         lsp-tools = true;
+        git-tools = true;
       };
       # anything else to pass and grab in lua with `nixCats.extra`
       extra = { };
