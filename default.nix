@@ -15,10 +15,12 @@ let
     lspsAndRuntimeDeps = {
       general = with pkgs; [
         lazygit
-        lua-language-server
-        stylua
         nixd
         alejandra
+      ];
+      lua = with pkgs; [
+        lua-language-server
+        stylua
       ];
     };
 
@@ -51,7 +53,7 @@ let
     # not loaded automatically at startup.
     # use with packadd and an autocommand in config to achieve lazy loading
     optionalPlugins = {
-      general = with pkgs.vimPlugins; [
+      lua = with pkgs.vimPlugins; [
         lazydev-nvim
       ];
     };
