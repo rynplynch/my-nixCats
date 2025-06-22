@@ -88,7 +88,6 @@ let
       # and a set of categories that you want
       # All categories you wish to include must be marked true
       categories = {
-        general = true;
       };
       # anything else to pass and grab in lua with `nixCats.extra`
       extra = { };
