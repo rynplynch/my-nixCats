@@ -18,6 +18,10 @@ let
         nixd
         alejandra
       ];
+      lsp-tools = with pkgs; [
+        # for quick searching
+        ripgrep
+      ];
       lua = with pkgs; [
         lua-language-server
         stylua
@@ -26,6 +30,11 @@ let
 
     # This is for plugins that will load at startup without using packadd:
     startupPlugins = {
+      lsp-tools = with pkgs.vimPlugins; [
+        nvim-treesitter
+        nvim-lspconfig
+        blink-cmp
+      ];
       general = with pkgs.vimPlugins; [
         snacks-nvim
         onedark-nvim
@@ -36,7 +45,6 @@ let
         nvim-lspconfig
         neogit
         vim-startuptime
-        blink-cmp
         nvim-treesitter.withAllGrammars
         lualine-nvim
         lualine-lsp-progress
