@@ -1,4 +1,4 @@
-if not nixCats('general') then
+if not nixCats('lsp-tools') then
   return
 end
 
