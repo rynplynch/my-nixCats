@@ -1,4 +1,6 @@
 { pkgs ? import <nixpkgs> { }
+, inputs
+, dependencyOverlays
 , nixCats ? builtins.fetchGit {
     url = "https://github.com/BirdeeHub/nixCats-nvim";
   }
@@ -131,7 +133,6 @@ utils.baseBuilder luaPath
   defaultPackageName
 # NOTE: or to return a set of all of them:
 # `in utils.mkAllPackages (utils.baseBuilder luaPath { inherit pkgs; } categoryDefinitions packageDefinitions defaultPackageName)`
-
 # NOTE: you may call .overrideNixCats on the resulting package or packages
 # to construct different packages from
 # your packageDefinitions from the resulting derivation of this expression!
