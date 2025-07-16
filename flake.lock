@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "lazygit-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749822865,
+        "narHash": "sha256-c6ewjFDI2+ARe++vQevM3EMdQg63ik6BpkZ4GbcfDAg=",
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "rev": "4839ab642962cc76bb1bf278427dc4c59be15072",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kdheepak",
+        "repo": "lazygit.nvim",
+        "type": "github"
+      }
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1748760778,
@@ -33,6 +49,7 @@
     },
     "root": {
       "inputs": {
+        "lazygit-nvim": "lazygit-nvim",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs"
       }
