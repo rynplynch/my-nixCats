@@ -1,6 +1,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- execute current file
+vim.keymap.set({ "n" }, "<leader><leader>x", '<cmd>source %<CR>')
+vim.keymap.set({ "n" }, "<leader>x", ':.lua<CR>')
+vim.keymap.set({ "v" }, "<leader>x", ':lua<CR>')
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
