@@ -54,6 +54,7 @@ let
             categories = {
               nix-build-bypass = true;
               lua = true;
+              nix = true;
             };
           }
         );
