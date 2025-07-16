@@ -13,15 +13,6 @@ let
   luaPath = ./.;
 
   # see :help nixCats.flake.outputs.categories
-        lazygit
-        nixd
-        alejandra
-      ];
-      lsp-tools = with pkgs; [
-        # for quick searching
-        ripgrep
-      ];
-        stylua
   categoryDefinitions =
     { pkgs
     , settings
@@ -33,42 +24,60 @@ let
     }@packageDef:
     {
       lspsAndRuntimeDeps = {
+        # dependencies I always use while developing
+        dev = {
+          inherit (pkgs)
+            # provides UI for everything git
+            lazygit
+            # quick search for files
+            fd
+            # quick searching for text in files
+            ripgrep
+            ;
+        };
         # language dependencies
         lua = with pkgs; [
           lua-language-server
+          # luajitPackages.luacheck
         ];
 
-      lsp-tools = with pkgs.vimPlugins; [
-        nvim-treesitter
-        nvim-lspconfig
-        blink-cmp
-      ];
-      git-tools = with pkgs.vimPlugins; [
-        neogit
-      ];
-      general = with pkgs.vimPlugins; [
-        snacks-nvim
-        onedark-nvim
-        vim-sleuth
-        mini-ai
-        mini-icons
-        mini-pairs
-        nvim-lspconfig
-        vim-startuptime
-        nvim-treesitter.withAllGrammars
-        lualine-nvim
-        lualine-lsp-progress
-        gitsigns-nvim
-        which-key-nvim
-        nvim-lint
-        conform-nvim
-        nvim-dap
-        nvim-dap-ui
-        nvim-dap-virtual-text
-      ];
+        nix = with pkgs; [
+          nil
+          nixfmt-rfc-style
+        ];
+      };
+
       # This is for plugins that will load at startup without using packadd:
       startupPlugins = {
 
+        dev = {
+          inherit (pkgs.vimPlugins)
+            # nvim-treesitter
+            nvim-lspconfig
+            blink-cmp
+            oil-nvim
+            telescope-nvim
+            mini-ai
+            mini-pairs
+            ;
+          inherit (pkgs.neovimPlugins) lazygit-nvim;
+        };
+        ui = {
+          inherit (pkgs.vimPlugins)
+            mini-icons
+            lualine-nvim
+            onedark-nvim
+            lualine-lsp-progress
+            ;
+        };
+        debug = {
+          inherit (pkgs.vimPlugins) nvim-dap nvim-dap-ui nvim-dap-virtual-text;
+        };
+
+        general = with pkgs.vimPlugins; [
+          vim-sleuth
+          gitsigns-nvim
+        ];
       };
 
       # not loaded automatically at startup.
@@ -78,6 +87,9 @@ let
           lazydev-nvim
         ];
 
+        nix = with pkgs; [
+          vimPlugins.nvim-treesitter-parsers.nix
+        ];
       };
     };
 
@@ -86,8 +98,6 @@ let
     # These are the names of your packages
     # you can include as many as you wish.
     # each of these sets are also written into the nixCats plugin for querying within lua.
-        lsp-tools = true;
-        git-tools = true;
     nvim =
       { pkgs
       , name
@@ -111,6 +121,7 @@ let
         # All categories you wish to include must be marked true
         categories = {
           # defaults for categories that all editor version will use
+          dev = true;
         };
         # anything else to pass and grab in lua with `nixCats.extra`
         extra = {
