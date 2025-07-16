@@ -1,11 +1,7 @@
--- NOTE: init.lua gets ran before anything else.
 
--- NOTE: These 2 need to be set up before any plugins are loaded.
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- [[ Setting options ]]
--- See `:help vim.o`
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -16,7 +12,6 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Set highlight on search
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
