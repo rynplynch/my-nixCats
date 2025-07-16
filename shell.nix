@@ -55,6 +55,7 @@ let
               nix-build-bypass = true;
               lua = true;
               nix = true;
+              ui = true;
             };
           }
         );
