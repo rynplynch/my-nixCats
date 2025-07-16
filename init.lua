@@ -14,8 +14,6 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Set highlight on search
 vim.opt.hlsearch = true
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -23,19 +21,6 @@ vim.opt.scrolloff = 10
 
 -- Make line numbers default
 vim.wo.number = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Indent
--- vim.o.smarttab = true
-vim.opt.cpoptions:append('I')
-vim.o.expandtab = true
--- vim.o.smartindent = true
--- vim.o.autoindent = true
--- vim.o.tabstop = 4
--- vim.o.softtabstop = 4
--- vim.o.shiftwidth = 4
 
 -- stops line wrapping from being confusing
 vim.o.breakindent = true
@@ -55,20 +40,9 @@ vim.wo.relativenumber = true
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,preview,noselect'
-
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Disable auto comment on enter ]]
--- See :help formatoptions
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "remove formatoptions",
-  callback = function()
-    vim.opt.formatoptions:remove({ "c", "r", "o" })
-  end,
-})
 vim.g.netrw_liststyle = 0
 vim.g.netrw_banner = 0
 
