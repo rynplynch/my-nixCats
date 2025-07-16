@@ -68,6 +68,7 @@
             inputs
             // {
               inherit (nixpkgsFor.${system}) pkgs;
+              inherit inputs dependencyOverlays;
             }
           )
         )
