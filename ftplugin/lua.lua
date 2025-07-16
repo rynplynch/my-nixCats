@@ -1,4 +1,4 @@
-if not nixCats('general') then
+if not nixCats('lua') then
   return
 end
 -- NOTE: Lazydev will make your Lua LSP stronger for Neovim config

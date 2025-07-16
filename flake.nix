@@ -2,10 +2,20 @@
   description = "An over-engineered Hello World in C";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-  inputs.nixCats.url = "github:BirdeeHub/nixCats-nvim";
-
-  outputs = { self, nixpkgs, nixCats }@inputs:
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    lazygit-nvim = {
+      url = "github:kdheepak/lazygit.nvim";
+      flake = false;
+    };
+  };
+  outputs =
+    { self
+    , nixpkgs
+    , nixCats
+    , ...
+    }@inputs:
     let
 
       # to work with older version of flakes
@@ -15,14 +25,31 @@
       version = builtins.substring 0 8 lastModifiedDate;
 
       # System types to support.
-      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
       # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
       # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = [ self.overlay ];
+        }
+      );
 
+      dependencyOverlays = # (import ./overlays inputs) ++
+        [
+          (nixCats.utils.standardPluginOverlay {
+            plugins-lazygit-nvim = inputs.lazygit-nvim;
+          })
+        ];
     in
 
     {
@@ -34,15 +61,26 @@
       # The default package for 'nix build'. This makes sense if the
       # flake provides only one package or there is a clear "main"
       # package.
-      packages = forAllSystems (system:
-        nixCats.utils.mkAllWithDefault (import ./default.nix (inputs // { inherit (nixpkgsFor.${system}) pkgs; }))
+      packages = forAllSystems (
+        system:
+        nixCats.utils.mkAllWithDefault (
+          import ./default.nix (
+            inputs
+            // {
+              inherit (nixpkgsFor.${system}) pkgs;
+              inherit inputs dependencyOverlays;
+            }
+          )
+        )
       );
 
       defaultPackage = forAllSystems (system: self.packages.${system}.default);
 
-      devShells = forAllSystems (system:
-        {
-          default = import ./shell.nix { inherit nixCats self system; pkgs = nixpkgsFor.${system}; };
-        });
+      devShells = forAllSystems (system: {
+        default = import ./shell.nix {
+          inherit nixCats self system;
+          pkgs = nixpkgsFor.${system};
+        };
+      });
     };
 }
