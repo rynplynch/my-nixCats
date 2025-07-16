@@ -44,6 +44,12 @@
         }
       );
 
+      dependencyOverlays = # (import ./overlays inputs) ++
+        [
+          (nixCats.utils.standardPluginOverlay {
+            plugins-lazygit-nvim = inputs.lazygit-nvim;
+          })
+        ];
     in
 
     {
