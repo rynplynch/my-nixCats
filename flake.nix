@@ -9,6 +9,10 @@
       url = "github:kdheepak/lazygit.nvim";
       flake = false;
     };
+    osv-nvim = {
+      url = "github:jbyuki/one-small-step-for-vimkind";
+      flake = false;
+    };
   };
   outputs =
     { self
@@ -48,6 +52,7 @@
         [
           (nixCats.utils.standardPluginOverlay {
             plugins-lazygit-nvim = inputs.lazygit-nvim;
+            plugins-osv-nvim = inputs.osv-nvim;
           })
         ];
     in

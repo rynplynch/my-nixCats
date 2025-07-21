@@ -72,6 +72,7 @@ let
         };
         debug = {
           inherit (pkgs.vimPlugins) nvim-dap nvim-dap-ui nvim-dap-virtual-text;
+          inherit (pkgs.neovimPlugins) osv-nvim;
         };
 
         general = with pkgs.vimPlugins; [
@@ -122,6 +123,7 @@ let
         categories = {
           # defaults for categories that all editor version will use
           dev = true;
+          debug = true;
         };
         # anything else to pass and grab in lua with `nixCats.extra`
         extra = {

@@ -8,12 +8,12 @@ local dap = require("dap")
 local dapui = require("dapui")
 
 -- Basic debugging keymaps, feel free to change to your liking!
-vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Start/Continue" })
-vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
-vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
-vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
-vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-vim.keymap.set("n", "<leader>B", function()
+vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debug: Start/Continue" })
+vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Debug: Step Into" })
+vim.keymap.set("n", "<leader>ds", dap.step_over, { desc = "Debug: Step Over" })
+vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Debug: Step Out" })
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
+vim.keymap.set("n", "<leader>dB", function()
    dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
 end, { desc = "Debug: Set Breakpoint" })
 
@@ -79,3 +79,18 @@ require("nvim-dap-virtual-text").setup({
    virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
    -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 })
+
+-- if lua is enable, configure debugger
+if nixCats("lua") then
+   dap.configurations.lua = {
+      {
+         type = 'nlua',
+         request = 'attach',
+         name = "Attach to running Neovim instance",
+      }
+   }
+
+   dap.adapters.nlua = function(callback, config)
+      callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+   end
+end
