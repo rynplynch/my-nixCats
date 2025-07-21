@@ -52,6 +52,7 @@
         [
           (nixCats.utils.standardPluginOverlay {
             plugins-lazygit-nvim = inputs.lazygit-nvim;
+            plugins-osv-nvim = inputs.osv-nvim;
           })
         ];
     in
