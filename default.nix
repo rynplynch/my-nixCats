@@ -72,6 +72,7 @@ let
         };
         debug = {
           inherit (pkgs.vimPlugins) nvim-dap nvim-dap-ui nvim-dap-virtual-text;
+          inherit (pkgs.neovimPlugins) osv-nvim;
         };
 
         general = with pkgs.vimPlugins; [
