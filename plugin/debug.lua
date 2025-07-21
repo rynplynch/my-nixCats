@@ -79,3 +79,18 @@ require("nvim-dap-virtual-text").setup({
    virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
    -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 })
+
+-- if lua is enable, configure debugger
+if nixCats("lua") then
+   dap.configurations.lua = {
+      {
+         type = 'nlua',
+         request = 'attach',
+         name = "Attach to running Neovim instance",
+      }
+   }
+
+   dap.adapters.nlua = function(callback, config)
+      callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+   end
+end
