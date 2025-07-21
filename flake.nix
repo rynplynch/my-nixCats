@@ -9,6 +9,10 @@
       url = "github:kdheepak/lazygit.nvim";
       flake = false;
     };
+    osv-nvim = {
+      url = "github:jbyuki/one-small-step-for-vimkind";
+      flake = false;
+    };
   };
   outputs =
     { self
