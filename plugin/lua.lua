@@ -1,4 +1,4 @@
--- only execute if our build enabled the lua and deb-tool categories
+-- only execute if our build enabled the lua and dev-tool categories
 if not nixCats("lua") and not nixCats("dev") then
    return
 end
