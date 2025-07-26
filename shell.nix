@@ -56,6 +56,7 @@ let
               lua = true;
               nix = true;
               ui = true;
+              csharp = true;
             };
           }
         );
