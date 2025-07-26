@@ -45,6 +45,10 @@ let
           nil
           nixfmt-rfc-style
         ];
+
+        csharp = with pkgs; [
+          roslyn-ls
+        ];
       };
 
       # This is for plugins that will load at startup without using packadd:
