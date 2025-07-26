@@ -1,4 +1,4 @@
-if not nixCats("nix") and not nixCats("dev") then
+if not nixCats("nix") or not nixCats("dev") then
    return
 end
 

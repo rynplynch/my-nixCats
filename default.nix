@@ -45,6 +45,10 @@ let
           nil
           nixfmt-rfc-style
         ];
+
+        csharp = with pkgs; [
+          roslyn-ls
+        ];
       };
 
       # This is for plugins that will load at startup without using packadd:
@@ -90,6 +94,10 @@ let
 
         nix = with pkgs; [
           vimPlugins.nvim-treesitter-parsers.nix
+        ];
+
+        csharp = with pkgs; [
+          vimPlugins.nvim-treesitter-parsers.c_sharp
         ];
       };
     };
