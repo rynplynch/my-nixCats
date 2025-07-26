@@ -95,6 +95,10 @@ let
         nix = with pkgs; [
           vimPlugins.nvim-treesitter-parsers.nix
         ];
+
+        csharp = with pkgs; [
+          vimPlugins.nvim-treesitter-parsers.c_sharp
+        ];
       };
     };
 
