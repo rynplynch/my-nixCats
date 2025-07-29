@@ -77,6 +77,7 @@
               }
             );
 
+          default = self.packages.${system}.ryanl-editor;
         }
       );
 
