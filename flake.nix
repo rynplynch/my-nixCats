@@ -87,5 +87,15 @@
           pkgs = nixpkgsFor.${system};
         };
       });
+    } // {
+      nixosModules.default =
+        nixCats.utils.mkNixosModules {
+          defaultPackageName = "ryanl-editor";
+          moduleNamespace = [ "ryanl-editor" ];
+          luaPath = "${./.}";
+          inherit nixpkgs dependencyOverlays;
+          inherit (self.packages.default)
+            categoryDefinitions packageDefinitions extra_pkg_config;
+        };
     };
 }
