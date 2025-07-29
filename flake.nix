@@ -68,7 +68,7 @@
       # package.
       packages = forAllSystems (
         system: {
-          nvim =
+          ryanl-editor =
             import ./default.nix (
               inputs
               // {
