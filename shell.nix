@@ -5,6 +5,7 @@
 }:
 with pkgs;
 let
+  oldPackage = self.packages.${system}.default;
   customNixCats = (
     self.packages.${system}.default.override (prev: {
       name = "neodev";
