@@ -77,7 +77,6 @@
         )
       );
 
-      defaultPackage = forAllSystems (system: self.packages.${system}.default);
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix {
