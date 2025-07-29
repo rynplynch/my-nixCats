@@ -68,14 +68,12 @@
       # package.
       packages = forAllSystems (
         system:
-        nixCats.utils.mkAllWithDefault (
-          import ./default.nix (
-            inputs
-            // {
-              inherit (nixpkgsFor.${system}) pkgs;
-              inherit inputs dependencyOverlays;
-            }
-          )
+        import ./default.nix (
+          inputs
+          // {
+            inherit (nixpkgsFor.${system}) pkgs;
+            inherit inputs dependencyOverlays;
+          }
         )
       );
 
