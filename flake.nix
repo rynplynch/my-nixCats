@@ -67,16 +67,18 @@
       # flake provides only one package or there is a clear "main"
       # package.
       packages = forAllSystems (
-        system:
-        import ./default.nix (
-          inputs
-          // {
-            inherit (nixpkgsFor.${system}) pkgs;
-            inherit inputs dependencyOverlays;
-          }
-        )
-      );
+        system: {
+          nvim =
+            import ./default.nix (
+              inputs
+              // {
+                inherit (nixpkgsFor.${system}) pkgs;
+                inherit inputs dependencyOverlays;
+              }
+            );
 
+        }
+      );
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix {
