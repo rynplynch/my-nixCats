@@ -67,25 +67,35 @@
       # flake provides only one package or there is a clear "main"
       # package.
       packages = forAllSystems (
-        system:
-        nixCats.utils.mkAllWithDefault (
-          import ./default.nix (
-            inputs
-            // {
-              inherit (nixpkgsFor.${system}) pkgs;
-              inherit inputs dependencyOverlays;
-            }
-          )
-        )
-      );
+        system: {
+          ryanl-editor =
+            import ./default.nix (
+              inputs
+              // {
+                inherit (nixpkgsFor.${system}) pkgs;
+                inherit inputs dependencyOverlays;
+              }
+            );
 
-      defaultPackage = forAllSystems (system: self.packages.${system}.default);
+          default = self.packages.${system}.ryanl-editor;
+        }
+      );
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix {
-          inherit nixCats self system;
+          inherit self system;
           pkgs = nixpkgsFor.${system};
         };
       });
+    } // {
+      nixosModules.default =
+        nixCats.utils.mkNixosModules {
+          defaultPackageName = "ryanl-editor";
+          moduleNamespace = [ "ryanl-editor" ];
+          luaPath = "${./.}";
+          inherit nixpkgs dependencyOverlays;
+          inherit (self.packages.default)
+            categoryDefinitions packageDefinitions extra_pkg_config;
+        };
     };
 }

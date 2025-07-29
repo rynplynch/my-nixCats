@@ -1,15 +1,16 @@
 { pkgs ? import <nixpkgs> { }
-, nixCats
 , self
 , system
 ,
 }:
 with pkgs;
 let
+  oldPackage = self.packages.${system}.default;
+  inherit (oldPackage) utils;
   customNixCats = (
     self.packages.${system}.default.override (prev: {
       name = "neodev";
-      categoryDefinitions = nixCats.utils.mergeCatDefs prev.categoryDefinitions (
+      categoryDefinitions = utils.mergeCatDefs prev.categoryDefinitions (
         { pkgs
         , settings
         , categories
@@ -45,7 +46,7 @@ let
 
       packageDefinitions = prev.packageDefinitions // {
         # the name here is what will show up in CLI
-        neodev = nixCats.utils.mergeCatDefs prev.packageDefinitions.nvim (
+        neodev = utils.mergeCatDefs prev.packageDefinitions.nvim (
           { pkgs, ... }:
           {
             settings = {
