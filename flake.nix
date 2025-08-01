@@ -93,11 +93,11 @@
           defaultPackageName = "ryanl-editor";
           moduleNamespace = [ "ryanl-editor" ];
           luaPath = "${./.}";
-          inherit nixpkgs dependencyOverlays;
+          # inherit nixpkgs dependencyOverlays;
           inherit (import ./default.nix (
               inputs
               // {
-                inherit inputs dependencyOverlays;
+                inherit nixpkgs inputs dependencyOverlays;
               }
             ))
             categoryDefinitions packageDefinitions extra_pkg_config;
