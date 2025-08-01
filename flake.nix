@@ -97,7 +97,7 @@
           inherit (import ./default.nix (
               inputs
               // {
-                inherit (nixpkgs) pkgs;
+          pkgs = nixpkgsFor.builtins.currentSystem;
                 inherit inputs dependencyOverlays;
               }
             ))
