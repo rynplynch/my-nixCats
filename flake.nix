@@ -97,7 +97,8 @@
           inherit (import ./default.nix (
               inputs
               // {
-                inherit nixpkgs inputs dependencyOverlays;
+                inherit (nixpkgs) pkgs;
+                inherit inputs dependencyOverlays;
               }
             ))
             categoryDefinitions packageDefinitions extra_pkg_config;
