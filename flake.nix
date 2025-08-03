@@ -74,14 +74,6 @@
         };
       });
     } // {
-      nixosModules.default =
-        nixCats.utils.mkNixosModules {
-          defaultPackageName = "ryanl-editor";
-          moduleNamespace = [ "ryanl-editor" ];
-          luaPath = "${./.}";
-          # inherit nixpkgs dependencyOverlays;
-          inherit (self.packages.${builtins.currentSystem}.default)
-            categoryDefinitions packageDefinitions extra_pkg_config;
-        };
+      nixosModules.default = nixCats.nixosModules.default;
     };
 }
