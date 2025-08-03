@@ -180,7 +180,7 @@ in
   }) // (let
     # we also export a nixos module to allow reconfiguration from configuration.nix
     nixosModule = utils.mkNixosModules {
-      moduleNamespace = [ defaultPackageName ];
+      moduleNamespace = [ "ryanl-editor" ];
       inherit defaultPackageName dependencyOverlays luaPath
         categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
     };
