@@ -63,16 +63,7 @@
       # package.
       packages = forAllSystems (
         system: {
-          ryanl-editor =
-            import ./default.nix (
-              inputs
-              // {
-                inherit (nixpkgsFor.${system}) pkgs;
-                inherit inputs dependencyOverlays;
-              }
-            );
-
-          default = self.packages.${system}.ryanl-editor;
+          default = nixCats.packages.${system}.default;
         }
       );
 
