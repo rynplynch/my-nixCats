@@ -63,7 +63,8 @@
       # package.
       packages = forAllSystems (
         system: {
-          default = nixCats.packages.${system}.default;
+          ryanl-editor = nixCats.packages.${system}.default;
+          default = self.packages.${system}.ryanl-editor;
         }
       );
 
