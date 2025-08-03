@@ -48,13 +48,8 @@
         }
       );
 
-      dependencyOverlays = # (import ./overlays inputs) ++
-        [
-          (nixCats.utils.standardPluginOverlay {
-            plugins-lazygit-nvim = inputs.lazygit-nvim;
-            plugins-osv-nvim = inputs.osv-nvim;
-          })
-        ];
+      nixCats = import ./default.nix { inherit inputs; };
+
     in
 
     {
@@ -68,15 +63,7 @@
       # package.
       packages = forAllSystems (
         system: {
-          ryanl-editor =
-            import ./default.nix (
-              inputs
-              // {
-                inherit (nixpkgsFor.${system}) pkgs;
-                inherit inputs dependencyOverlays;
-              }
-            );
-
+          ryanl-editor = nixCats.packages.${system}.default;
           default = self.packages.${system}.ryanl-editor;
         }
       );
@@ -88,14 +75,6 @@
         };
       });
     } // {
-      nixosModules.default =
-        nixCats.utils.mkNixosModules {
-          defaultPackageName = "ryanl-editor";
-          moduleNamespace = [ "ryanl-editor" ];
-          luaPath = "${./.}";
-          inherit nixpkgs dependencyOverlays;
-          inherit (self.packages.default)
-            categoryDefinitions packageDefinitions extra_pkg_config;
-        };
+      nixosModules.default = nixCats.nixosModules.default;
     };
 }
