@@ -48,6 +48,8 @@
         }
       );
 
+      nixCats = import ./default.nix { inherit inputs; };
+
     in
 
     {
