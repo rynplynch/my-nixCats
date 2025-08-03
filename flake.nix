@@ -94,13 +94,7 @@
           moduleNamespace = [ "ryanl-editor" ];
           luaPath = "${./.}";
           # inherit nixpkgs dependencyOverlays;
-          inherit (import ./default.nix (
-              inputs
-              // {
-          pkgs = nixpkgsFor.builtins.currentSystem;
-                inherit inputs dependencyOverlays;
-              }
-            ))
+          inherit (self.packages.${builtins.currentSystem}.default)
             categoryDefinitions packageDefinitions extra_pkg_config;
         };
     };
