@@ -1,5 +1,6 @@
-{inputs, ... }@attrs: let
-  inherit (inputs) nixpkgs; # <-- nixpkgs = inputs.nixpkgsSomething;
+{ inputs, ... }@attrs:
+let
+  inherit (inputs) nixpkgs;# <-- nixpkgs = inputs.nixpkgsSomething;
   inherit (inputs.nixCats) utils;
   luaPath = ./.;
   forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
@@ -17,10 +18,10 @@
     # use `pkgs.neovimPlugins`, which is a set of our plugins.
     (utils.standardPluginOverlay inputs)
     # add any flake overlays here.
-          (utils.standardPluginOverlay {
-            plugins-lazygit-nvim = inputs.lazygit-nvim;
-            plugins-osv-nvim = inputs.osv-nvim;
-          })
+    (utils.standardPluginOverlay {
+      plugins-lazygit-nvim = inputs.lazygit-nvim;
+      plugins-osv-nvim = inputs.osv-nvim;
+    })
     # when other people mess up their overlays by wrapping them with system,
     # you may instead call this function on their overlay.
     # it will check if it has the system in the set, and if so return the desired overlay
@@ -30,83 +31,83 @@
   ];
 
   categoryDefinitions = { pkgs, settings, categories, extra, name, mkPlugin, ... }@packageDef: {
-      lspsAndRuntimeDeps = {
-        # dependencies I always use while developing
-        dev = {
-          inherit (pkgs)
-            # provides UI for everything git
-            lazygit
-            # quick search for files
-            fd
-            # quick searching for text in files
-            ripgrep
-            ;
-        };
-        # language dependencies
-        lua = with pkgs; [
-          lua-language-server
-          # luajitPackages.luacheck
-        ];
+    lspsAndRuntimeDeps = {
+      # dependencies I always use while developing
+      dev = {
+        inherit (pkgs)
+          # provides UI for everything git
+          lazygit
+          # quick search for files
+          fd
+          # quick searching for text in files
+          ripgrep
+          ;
+      };
+      # language dependencies
+      lua = with pkgs; [
+        lua-language-server
+        # luajitPackages.luacheck
+      ];
 
-        nix = with pkgs; [
-          nil
-          nixfmt-rfc-style
-        ];
+      nix = with pkgs; [
+        nil
+        nixfmt-rfc-style
+      ];
 
-        csharp = with pkgs; [
-          roslyn-ls
-        ];
+      csharp = with pkgs; [
+        roslyn-ls
+      ];
+    };
+
+    # This is for plugins that will load at startup without using packadd:
+    startupPlugins = {
+
+      dev = {
+        inherit (pkgs.vimPlugins)
+          # nvim-treesitter
+          nvim-lspconfig
+          blink-cmp
+          oil-nvim
+          telescope-nvim
+          mini-ai
+          mini-pairs
+          ;
+        inherit (pkgs.neovimPlugins) lazygit-nvim;
+      };
+      ui = {
+        inherit (pkgs.vimPlugins)
+          mini-icons
+          lualine-nvim
+          onedark-nvim
+          lualine-lsp-progress
+          ;
+      };
+      debug = {
+        inherit (pkgs.vimPlugins) nvim-dap nvim-dap-ui nvim-dap-virtual-text;
+        inherit (pkgs.neovimPlugins) osv-nvim;
       };
 
-      # This is for plugins that will load at startup without using packadd:
-      startupPlugins = {
+      general = with pkgs.vimPlugins; [
+        vim-sleuth
+        gitsigns-nvim
+      ];
+    };
 
-        dev = {
-          inherit (pkgs.vimPlugins)
-            # nvim-treesitter
-            nvim-lspconfig
-            blink-cmp
-            oil-nvim
-            telescope-nvim
-            mini-ai
-            mini-pairs
-            ;
-          inherit (pkgs.neovimPlugins) lazygit-nvim;
-        };
-        ui = {
-          inherit (pkgs.vimPlugins)
-            mini-icons
-            lualine-nvim
-            onedark-nvim
-            lualine-lsp-progress
-            ;
-        };
-        debug = {
-          inherit (pkgs.vimPlugins) nvim-dap nvim-dap-ui nvim-dap-virtual-text;
-          inherit (pkgs.neovimPlugins) osv-nvim;
-        };
+    # not loaded automatically at startup.
+    # use with packadd and an autocommand in config to achieve lazy loading
+    optionalPlugins = {
+      lua = with pkgs.vimPlugins; [
+        lazydev-nvim
+      ];
 
-        general = with pkgs.vimPlugins; [
-          vim-sleuth
-          gitsigns-nvim
-        ];
-      };
+      nix = with pkgs; [
+        vimPlugins.nvim-treesitter-parsers.nix
+      ];
 
-      # not loaded automatically at startup.
-      # use with packadd and an autocommand in config to achieve lazy loading
-      optionalPlugins = {
-        lua = with pkgs.vimPlugins; [
-          lazydev-nvim
-        ];
-
-        nix = with pkgs; [
-          vimPlugins.nvim-treesitter-parsers.nix
-        ];
-
-        csharp = with pkgs; [
-          vimPlugins.nvim-treesitter-parsers.c_sharp
-        ];
-      };
+      csharp = with pkgs; [
+        vimPlugins.nvim-treesitter-parsers.c_sharp
+      ];
+    };
   };
 
   packageDefinitions = {
@@ -150,34 +151,41 @@
   # to the name of the packageDefinitions entry you wish to use as the default.
   defaultPackageName = "nvim";
 in
-  # see :help nixCats.flake.outputs.exports
-  forEachSystem (system: let
-    nixCatsBuilder = utils.baseBuilder luaPath {
-      inherit system dependencyOverlays extra_pkg_config nixpkgs;
-    } categoryDefinitions packageDefinitions;
-    defaultPackage = nixCatsBuilder defaultPackageName;
-    # this is just for using utils such as pkgs.mkShell
-    # The one used to build neovim is resolved inside the builder
-    # and is passed to our categoryDefinitions and packageDefinitions
-    pkgs = import nixpkgs { inherit system; };
-  in {
-    # this will make a package out of each of the packageDefinitions defined above
-    # and set the default package to the one passed in here.
-    packages = utils.mkAllWithDefault defaultPackage;
+# see :help nixCats.flake.outputs.exports
+forEachSystem
+  (system:
+    let
+      nixCatsBuilder = utils.baseBuilder luaPath
+        {
+          inherit system dependencyOverlays extra_pkg_config nixpkgs;
+        }
+        categoryDefinitions
+        packageDefinitions;
+      defaultPackage = nixCatsBuilder defaultPackageName;
+      # this is just for using utils such as pkgs.mkShell
+      # The one used to build neovim is resolved inside the builder
+      # and is passed to our categoryDefinitions and packageDefinitions
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+      # this will make a package out of each of the packageDefinitions defined above
+      # and set the default package to the one passed in here.
+      packages = utils.mkAllWithDefault defaultPackage;
 
-    # choose your package for devShell
-    # and add whatever else you want in it.
-    devShells = {
-      default = pkgs.mkShell {
-        name = defaultPackageName;
-        packages = [ defaultPackage ];
-        inputsFrom = [ ];
-        shellHook = ''
+      # choose your package for devShell
+      # and add whatever else you want in it.
+      devShells = {
+        default = pkgs.mkShell {
+          name = defaultPackageName;
+          packages = [ defaultPackage ];
+          inputsFrom = [ ];
+          shellHook = ''
         '';
+        };
       };
-    };
 
-  }) // (let
+    }) // (
+  let
     # we also export a nixos module to allow reconfiguration from configuration.nix
     nixosModule = utils.mkNixosModules {
       moduleNamespace = [ "ryanl-editor" ];
@@ -190,21 +198,27 @@ in
       inherit defaultPackageName dependencyOverlays luaPath
         categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
     };
-  in {
+  in
+  {
 
-  # these outputs will be NOT wrapped with ${system}
+    # these outputs will be NOT wrapped with ${system}
 
-  # this will make an overlay out of each of the packageDefinitions defined above
-  # and set the default overlay to the one named here.
-  overlays = utils.makeOverlays luaPath {
-    # we pass in the things to make a pkgs variable to build nvim with later
-    inherit nixpkgs dependencyOverlays extra_pkg_config;
-    # and also our categoryDefinitions
-  } categoryDefinitions packageDefinitions defaultPackageName;
+    # this will make an overlay out of each of the packageDefinitions defined above
+    # and set the default overlay to the one named here.
+    overlays = utils.makeOverlays luaPath
+      {
+        # we pass in the things to make a pkgs variable to build nvim with later
+        inherit nixpkgs dependencyOverlays extra_pkg_config;
+        # and also our categoryDefinitions
+      }
+      categoryDefinitions
+      packageDefinitions
+      defaultPackageName;
 
-  nixosModules.default = nixosModule;
-  homeModules.default = homeModule;
+    nixosModules.default = nixosModule;
+    homeModules.default = homeModule;
 
-  inherit utils nixosModule homeModule;
-  inherit (utils) templates;
-})
+    inherit utils nixosModule homeModule;
+    inherit (utils) templates;
+  }
+)

@@ -1,10 +1,10 @@
 # Ryan's Neovim configuration
 
 ## nixCats
+My configuration is based off the nixCats 'simple' template found [here](https://github.com/BirdeeHub/nixCats-nvim/tree/main/templates/simple)
 
-My configuration is based of the nixCats 'simple' template found [here](https://github.com/BirdeeHub/nixCats-nvim/tree/main/templates/simple)
+## My Goal
+My aim is to create configurations for specific enviroments. For instance in an enviroment where I use C#; I can simply enable the *csharp* category declared inside *default.nix*. For my homeserver however, I would only enable the *nix* category or whatever else I might need for that enviroment.
 
-## Structure
-A lua file found in <em>./plugins/</em> represents the configuration for a nixCats category. While each nixCats category represents a collection of dependencies used in that configuration. Each lua file should share the same name as its corresponding category. Best practice is for your lua configurations to always use the dependecy and never use a dependecy(maybe it's okay for the config to check and consume another nixCat?).
-
-
+## Checkout nixCats!
+Thanks to BirdeeHub for creating [nixCats](https://github.com/BirdeeHub/nixCats-nvim/tree/main/)!
