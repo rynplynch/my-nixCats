@@ -69,6 +69,7 @@ let
           blink-cmp
           oil-nvim
           telescope-nvim
+          Preview-nvim
           mini-ai
           mini-pairs
           ;
