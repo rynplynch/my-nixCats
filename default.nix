@@ -51,7 +51,7 @@ let
 
       nix = with pkgs; [
         nil
-        nixfmt-rfc-style
+        nixpkgs-fmt
       ];
 
       csharp = with pkgs; [
