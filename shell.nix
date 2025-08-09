@@ -68,7 +68,6 @@ in
 mkShell {
   buildInputs = [
     customNixCats
-    nixpkgs-fmt
   ];
 
   shellHook = ''
