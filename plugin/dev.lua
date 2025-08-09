@@ -32,6 +32,9 @@ require("blink.cmp").setup({
    signature = { enabled = true },
 })
 
+-- view markdown files with the Preview command
+require("preview").setup()
+
 -- shared configuration for all language servers
 vim.api.nvim_create_autocmd('LspAttach', {
    group = vim.api.nvim_create_augroup('my.lsp', {}),
