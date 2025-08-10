@@ -3,11 +3,11 @@
     "lazygit-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1749822865,
-        "narHash": "sha256-c6ewjFDI2+ARe++vQevM3EMdQg63ik6BpkZ4GbcfDAg=",
+        "lastModified": 1754622381,
+        "narHash": "sha256-L+1nyhr4+JnIsVsjzymVonOA1AOJVLmh5LM+FbggLQY=",
         "owner": "kdheepak",
         "repo": "lazygit.nvim",
-        "rev": "4839ab642962cc76bb1bf278427dc4c59be15072",
+        "rev": "3c524ebec6072568064235c407195e9f9fd0cb8a",
         "type": "github"
       },
       "original": {
@@ -18,11 +18,11 @@
     },
     "nixCats": {
       "locked": {
-        "lastModified": 1748760778,
-        "narHash": "sha256-i0xBOGCDtrJ29sIelwbSATUJK4AP6McPMxBA0dthK0o=",
+        "lastModified": 1753170780,
+        "narHash": "sha256-rxnjPhOu7kr3REU8AhbKwRYnXHWlRXBqgWOO9MD0HyY=",
         "owner": "BirdeeHub",
         "repo": "nixCats-nvim",
-        "rev": "88cde33af841e2aa1ea0c83c4d9dcfefdde54fb3",
+        "rev": "e0c3fd5c218c808ce31e29caa91df43c65d7dfc6",
         "type": "github"
       },
       "original": {
@@ -33,16 +33,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1749401433,
-        "narHash": "sha256-HXIQzULIG/MEUW2Q/Ss47oE3QrjxvpUX7gUl4Xp6lnc=",
-        "owner": "nixos",
+        "lastModified": 1754498491,
+        "narHash": "sha256-erbiH2agUTD0Z30xcVSFcDHzkRvkRXOQ3lb887bcVrs=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08fcb0dcb59df0344652b38ea6326a2d8271baff",
+        "rev": "c2ae88e026f9525daf89587f3cbee584b92b6134",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -50,11 +50,11 @@
     "osv-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1751764278,
-        "narHash": "sha256-x5rdnxFxDQadAdWhnyewK1e8QFk/k3pgyLKBsFKS85Q=",
+        "lastModified": 1752955441,
+        "narHash": "sha256-aDqBD24KvFT1JxlAVnie7RRIwOlboU8jmKhHfhOh+Ns=",
         "owner": "jbyuki",
         "repo": "one-small-step-for-vimkind",
-        "rev": "81fa8fe2b9ed69a2c2af5fa79a2d4fe7a6ca60e5",
+        "rev": "91b4e0fb0d640def73812aceb22dafb99261dd67",
         "type": "github"
       },
       "original": {
