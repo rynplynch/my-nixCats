@@ -41,6 +41,8 @@ let
           fd
           # quick searching for text in files
           ripgrep
+          # ensure the enviroment has git
+          git
           ;
       };
       # language dependencies
