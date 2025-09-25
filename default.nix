@@ -43,6 +43,8 @@ let
           ripgrep
           # ensure the enviroment has git
           git
+          # bridge between nvim clip registers and system clipboard
+          xclip
           ;
       };
       # language dependencies
