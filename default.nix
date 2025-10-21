@@ -117,6 +117,19 @@ let
       csharp = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.c_sharp
       ];
+
+      org = with pkgs; [
+        (neovimUtils.grammarToPlugin (tree-sitter.buildGrammar {
+          language = "org";
+          version = "2.0.1";
+          src = inputs.org-grammar;
+          meta = with lib; {
+            description = "tree-sitter grammar for the org markup language";
+            homepage = "https://github.com/nvim-orgmode/orgmode";
+            license = licenses.mit;
+          };
+        }))
+      ];
     };
   };
 
