@@ -58,6 +58,7 @@ let
               nix = true;
               ui = true;
               csharp = true;
+              org = true;
             };
           }
         );

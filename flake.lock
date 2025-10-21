@@ -47,6 +47,39 @@
         "type": "github"
       }
     },
+    "org-grammar": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747036335,
+        "narHash": "sha256-k1g5+iyJvVWKOuAkFNaaKl42Xmmz9BN+vT0+IQ/4RQI=",
+        "owner": "nvim-orgmode",
+        "repo": "tree-sitter-org",
+        "rev": "a146dd51d52e0eb5a736e427cd244d93375fbed9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "ref": "next",
+        "repo": "tree-sitter-org",
+        "type": "github"
+      }
+    },
+    "orgmode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759555282,
+        "narHash": "sha256-pdXipfJ9E+9GEx4iWLVPDIpRWBakeMRRuKXJTN7uBuc=",
+        "owner": "nvim-orgmode",
+        "repo": "orgmode",
+        "rev": "03777caca5c2df4c5b2067734b7829e9df07a423",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "orgmode",
+        "type": "github"
+      }
+    },
     "osv-nvim": {
       "flake": false,
       "locked": {
@@ -68,6 +101,8 @@
         "lazygit-nvim": "lazygit-nvim",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "org-grammar": "org-grammar",
+        "orgmode-nvim": "orgmode-nvim",
         "osv-nvim": "osv-nvim"
       }
     }
