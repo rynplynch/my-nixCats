@@ -17,6 +17,10 @@
       url = "github:nvim-orgmode/orgmode";
       flake = false;
     };
+    org-grammar = {
+      url = "github:nvim-orgmode/tree-sitter-org/next";
+      flake = false;
+    };
   };
   outputs =
     { self
