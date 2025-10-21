@@ -93,6 +93,10 @@ let
         inherit (pkgs.neovimPlugins) osv-nvim;
       };
 
+      org = {
+        inherit (pkgs.neovimPlugins) orgmode-nvim;
+      };
+
       general = with pkgs.vimPlugins; [
         vim-sleuth
         gitsigns-nvim
