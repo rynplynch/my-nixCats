@@ -21,6 +21,7 @@ let
     (utils.standardPluginOverlay {
       plugins-lazygit-nvim = inputs.lazygit-nvim;
       plugins-osv-nvim = inputs.osv-nvim;
+      plugins-orgmode-nvim = inputs.orgmode-nvim;
     })
     # when other people mess up their overlays by wrapping them with system,
     # you may instead call this function on their overlay.
