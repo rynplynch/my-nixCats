@@ -13,6 +13,14 @@
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
     };
+    orgmode-nvim = {
+      url = "github:nvim-orgmode/orgmode";
+      flake = false;
+    };
+    org-grammar = {
+      url = "github:nvim-orgmode/tree-sitter-org/next";
+      flake = false;
+    };
   };
   outputs =
     { self
