@@ -12,3 +12,7 @@ local grammar_path = nixCats.pawsible('allPlugins.opt.vimplugin-treesitter-gramm
  im.treesitter.language.add('org', { path = grammar_path .. '/parser/org.so' })
 vim.treesitter.language.register('org', { 'org' })
 
+require('orgmode').setup({
+   org_agenda_files = '~/orgfiles/**/*',
+   org_default_notes_file = '~/orgfiles/refile.org',
+})
