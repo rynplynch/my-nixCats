@@ -62,6 +62,13 @@ let
       csharp = with pkgs; [
         roslyn-ls
       ];
+
+      org = with pkgs; {
+        pdf = [
+          pandoc
+          texliveSmall
+        ];
+      };
     };
 
     # This is for plugins that will load at startup without using packadd:
