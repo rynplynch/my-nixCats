@@ -21,6 +21,10 @@
       url = "github:nvim-orgmode/tree-sitter-org/next";
       flake = false;
     };
+    pdfpreview-nvim = {
+      url = "github:franco-ruggeri/pdf-preview.nvim";
+      flake = false;
+    };
   };
   outputs =
     { self

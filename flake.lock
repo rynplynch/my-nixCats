@@ -96,6 +96,22 @@
         "type": "github"
       }
     },
+    "pdfpreview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752362857,
+        "narHash": "sha256-t8zJL9MYjUTsNdKlGcPrweR6l/hBKZ7We9NGYEmevL8=",
+        "owner": "franco-ruggeri",
+        "repo": "pdf-preview.nvim",
+        "rev": "640c294222f815f6ec773dba730994fd6d817df0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "franco-ruggeri",
+        "repo": "pdf-preview.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "lazygit-nvim": "lazygit-nvim",
@@ -103,7 +119,8 @@
         "nixpkgs": "nixpkgs",
         "org-grammar": "org-grammar",
         "orgmode-nvim": "orgmode-nvim",
-        "osv-nvim": "osv-nvim"
+        "osv-nvim": "osv-nvim",
+        "pdfpreview-nvim": "pdfpreview-nvim"
       }
     }
   },
