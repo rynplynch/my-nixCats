@@ -22,6 +22,7 @@ let
       plugins-lazygit-nvim = inputs.lazygit-nvim;
       plugins-osv-nvim = inputs.osv-nvim;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
+      plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
     })
     # when other people mess up their overlays by wrapping them with system,
     # you may instead call this function on their overlay.
@@ -65,8 +66,11 @@ let
 
       org = with pkgs; {
         pdf = [
+          poppler-utils
           pandoc
           texliveSmall
+          # for pdf-preview
+          nodejs_24
         ];
       };
     };
@@ -101,7 +105,7 @@ let
       };
 
       org = {
-        inherit (pkgs.neovimPlugins) orgmode-nvim;
+        inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim;
       };
 
       general = with pkgs.vimPlugins; [
