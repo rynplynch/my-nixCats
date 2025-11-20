@@ -8,7 +8,7 @@ local grammar_path = nixCats.pawsible('allPlugins.opt.vimplugin-treesitter-gramm
 vim.treesitter.language.add('nix', { path = grammar_path .. '/parser/nix.so' })
 vim.treesitter.language.register('nix', { 'nix' })
 
-require("lspconfig").nil_ls.setup {
+vim.lsp.config['nil_ls'] = {
    settings = {
       capabilities = require('blink-cmp').get_lsp_capabilities(),
       ['nil'] = {
@@ -19,3 +19,5 @@ require("lspconfig").nil_ls.setup {
       }
    }
 }
+
+vim.lsp.enable('nil_ls')

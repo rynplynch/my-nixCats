@@ -6,14 +6,20 @@ end
 vim.cmd.packadd("lazydev.nvim")
 require('lazydev').setup({})
 
-
-require("lspconfig").lua_ls.setup {
+-- this ammends the default nvim-lspconfig configurations
+-- vim.lsp.config will search the /lsp directory, finding the file name 'lua_ls'
+vim.lsp.config['lua_ls'] = {
    settings = {
-      capabilities = require('blink-cmp').get_lsp_capabilities(),
       Lua = {
+         runtime = {
+            version = 'LuaJIT',
+         },
          diagnostics = {
-            globals = { "nixCats" }
-         }
+            globals = { "nixCats", "vim" }
+         },
+         capabilities = require('blink-cmp').get_lsp_capabilities(),
       }
    }
 }
+
+vim.lsp.enable('lua_ls')
