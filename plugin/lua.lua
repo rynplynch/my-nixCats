@@ -10,8 +10,8 @@ vim.lsp.config['lua_ls'] = {
    settings = {
       Lua = {
          diagnostics = {
-            globals = { "nixCats" }
-         }
+            globals = { "nixCats", "vim" }
+         },
          capabilities = require('blink-cmp').get_lsp_capabilities(),
       }
    }
