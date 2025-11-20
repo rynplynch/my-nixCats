@@ -64,6 +64,10 @@ let
         roslyn-ls
       ];
 
+      python = with pkgs; [
+        python313Packages.python-lsp-server
+      ];
+
       org = with pkgs; {
         pdf = [
           poppler-utils
