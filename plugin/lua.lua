@@ -6,14 +6,14 @@ end
 vim.cmd.packadd("lazydev.nvim")
 require('lazydev').setup({})
 
-
-require("lspconfig").lua_ls.setup {
+vim.lsp.config['lua_ls'] = {
    settings = {
-      capabilities = require('blink-cmp').get_lsp_capabilities(),
       Lua = {
          diagnostics = {
             globals = { "nixCats" }
          }
+         capabilities = require('blink-cmp').get_lsp_capabilities(),
       }
    }
 }
+
