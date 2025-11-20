@@ -6,6 +6,8 @@ end
 vim.cmd.packadd("lazydev.nvim")
 require('lazydev').setup({})
 
+-- this ammends the default nvim-lspconfig configurations
+-- vim.lsp.config will search the /lsp directory, finding the file name 'lua_ls'
 vim.lsp.config['lua_ls'] = {
    settings = {
       Lua = {
