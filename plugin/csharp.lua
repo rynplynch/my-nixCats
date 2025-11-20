@@ -8,4 +8,10 @@ local grammar_path = nixCats.pawsible('allPlugins.opt.vimplugin-treesitter-gramm
 vim.treesitter.language.add('c_sharp', { path = grammar_path .. '/parser/c_sharp.so' })
 vim.treesitter.language.register('c_sharp', { 'cs' })
 
+vim.lsp.config['roslyn_ls'] = {
+   settings = {
+      capabilities = require('blink-cmp').get_lsp_capabilities(),
+   }
+}
+
 vim.lsp.enable('roslyn_ls')
