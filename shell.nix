@@ -59,6 +59,7 @@ let
               ui = true;
               csharp = true;
               org = true;
+              python = true;
             };
           }
         );
