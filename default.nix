@@ -93,7 +93,7 @@ let
           mini-ai
           mini-pairs
           ;
-        inherit (pkgs.neovimPlugins) lazygit-nvim;
+        inherit (pkgs.neovimPlugins) neogit-nvim;
       };
       ui = {
         inherit (pkgs.vimPlugins)
