@@ -19,7 +19,7 @@ let
     (utils.standardPluginOverlay inputs)
     # add any flake overlays here.
     (utils.standardPluginOverlay {
-      plugins-lazygit-nvim = inputs.lazygit-nvim;
+      plugins-neogit-nvim = inputs.neogit;
       plugins-osv-nvim = inputs.osv-nvim;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
       plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
