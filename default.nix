@@ -37,8 +37,6 @@ let
       # dependencies I always use while developing
       dev = {
         inherit (pkgs)
-          # provides UI for everything git
-          lazygit
           # quick search for files
           fd
           # quick searching for text in files
