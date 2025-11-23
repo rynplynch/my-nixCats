@@ -1,18 +1,18 @@
 {
   "nodes": {
-    "lazygit-nvim": {
+    "neogit": {
       "flake": false,
       "locked": {
-        "lastModified": 1754622381,
-        "narHash": "sha256-L+1nyhr4+JnIsVsjzymVonOA1AOJVLmh5LM+FbggLQY=",
-        "owner": "kdheepak",
-        "repo": "lazygit.nvim",
-        "rev": "3c524ebec6072568064235c407195e9f9fd0cb8a",
+        "lastModified": 1763456687,
+        "narHash": "sha256-A6KlPgqOwoKswuFiOFah1peCLFNi4BSOUVeeQ1Aw+uI=",
+        "owner": "NeogitOrg",
+        "repo": "neogit",
+        "rev": "4ba620addbeeca2594c794b151e611c037973480",
         "type": "github"
       },
       "original": {
-        "owner": "kdheepak",
-        "repo": "lazygit.nvim",
+        "owner": "NeogitOrg",
+        "repo": "neogit",
         "type": "github"
       }
     },
@@ -114,7 +114,7 @@
     },
     "root": {
       "inputs": {
-        "lazygit-nvim": "lazygit-nvim",
+        "neogit": "neogit",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "org-grammar": "org-grammar",

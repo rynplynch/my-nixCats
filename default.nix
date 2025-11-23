@@ -19,7 +19,7 @@ let
     (utils.standardPluginOverlay inputs)
     # add any flake overlays here.
     (utils.standardPluginOverlay {
-      plugins-lazygit-nvim = inputs.lazygit-nvim;
+      plugins-neogit-nvim = inputs.neogit;
       plugins-osv-nvim = inputs.osv-nvim;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
       plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
@@ -37,8 +37,6 @@ let
       # dependencies I always use while developing
       dev = {
         inherit (pkgs)
-          # provides UI for everything git
-          lazygit
           # quick search for files
           fd
           # quick searching for text in files
@@ -93,7 +91,7 @@ let
           mini-ai
           mini-pairs
           ;
-        inherit (pkgs.neovimPlugins) lazygit-nvim;
+        inherit (pkgs.neovimPlugins) neogit-nvim;
       };
       ui = {
         inherit (pkgs.vimPlugins)

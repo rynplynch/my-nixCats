@@ -5,8 +5,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
-    lazygit-nvim = {
-      url = "github:kdheepak/lazygit.nvim";
+    neogit = {
+      url = "github:NeogitOrg/neogit";
       flake = false;
     };
     osv-nvim = {

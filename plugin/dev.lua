@@ -12,7 +12,7 @@ require("oil").setup()
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 
 -- UI for git
-vim.keymap.set("n", "<leader>-", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+vim.keymap.set("n", "<leader>-", "<cmd>Neogit<cr>", { desc = "Launch Neogit" })
 
 -- searching for files in project, keymaps, text in files and the help doc
 vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files)
