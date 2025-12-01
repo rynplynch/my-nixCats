@@ -20,6 +20,7 @@ let
     # add any flake overlays here.
     (utils.standardPluginOverlay {
       plugins-neogit-nvim = inputs.neogit;
+      plugins-diffview-nvim = inputs.diffview-nvim;
       plugins-osv-nvim = inputs.osv-nvim;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
       plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
@@ -91,7 +92,7 @@ let
           mini-ai
           mini-pairs
           ;
-        inherit (pkgs.neovimPlugins) neogit-nvim;
+        inherit (pkgs.neovimPlugins) neogit-nvim diffview-nvim;
       };
       ui = {
         inherit (pkgs.vimPlugins)

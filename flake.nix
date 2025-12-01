@@ -9,6 +9,10 @@
       url = "github:NeogitOrg/neogit";
       flake = false;
     };
+    diffview-nvim = {
+      url = "github:sindrets/diffview.nvim";
+      flake = false;
+    };
     osv-nvim = {
       url = "github:jbyuki/one-small-step-for-vimkind";
       flake = false;
