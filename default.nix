@@ -92,7 +92,7 @@ let
           mini-ai
           mini-pairs
           ;
-        inherit (pkgs.neovimPlugins) neogit-nvim;
+        inherit (pkgs.neovimPlugins) neogit-nvim diffview-nvim;
       };
       ui = {
         inherit (pkgs.vimPlugins)
