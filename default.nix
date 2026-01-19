@@ -109,6 +109,7 @@ let
 
       org = {
         inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim;
+        inherit (pkgs.vimPlugins) org-roam-nvim;
       };
 
       general = with pkgs.vimPlugins; [
