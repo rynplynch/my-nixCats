@@ -17,4 +17,12 @@ require('orgmode').setup({
    org_default_notes_file = '~/orgfiles/refile.org',
 })
 
+require("org-roam").setup({
+   directory = "~/org_roam_files",
+   -- optional
+   org_files = {
+      '~/orgfiles/**/*'
+   }
+})
+
 require('pdf-preview').setup()
