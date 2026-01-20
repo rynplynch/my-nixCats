@@ -22,6 +22,7 @@ let
       plugins-neogit-nvim = inputs.neogit;
       plugins-diffview-nvim = inputs.diffview-nvim;
       plugins-osv-nvim = inputs.osv-nvim;
+      plugins-org-bullets = inputs.org-bullets;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
       plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
     })
@@ -108,7 +109,7 @@ let
       };
 
       org = {
-        inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim;
+        inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim org-bullets;
         inherit (pkgs.vimPlugins) org-roam-nvim;
       };
 
