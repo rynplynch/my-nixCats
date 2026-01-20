@@ -21,6 +21,10 @@
       url = "github:nvim-orgmode/orgmode";
       flake = false;
     };
+    org-bullets = {
+      url = "github:nvim-orgmode/org-bullets.nvim";
+      flake = false;
+    };
     org-grammar = {
       url = "github:nvim-orgmode/tree-sitter-org/next";
       flake = false;
