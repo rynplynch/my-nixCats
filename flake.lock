@@ -63,6 +63,22 @@
         "type": "github"
       }
     },
+    "org-bullets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737617809,
+        "narHash": "sha256-/l8IfvVSPK7pt3Or39+uenryTM5aBvyJZX5trKNh0X0=",
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "rev": "21437cfa99c70f2c18977bffd423f912a7b832ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "type": "github"
+      }
+    },
     "org-grammar": {
       "flake": false,
       "locked": {
@@ -134,6 +150,7 @@
         "neogit": "neogit",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "org-bullets": "org-bullets",
         "org-grammar": "org-grammar",
         "orgmode-nvim": "orgmode-nvim",
         "osv-nvim": "osv-nvim",
