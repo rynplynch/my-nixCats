@@ -12,6 +12,10 @@ vim.keymap.set({ "v" }, "<leader>x", ':lua<CR>')
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
+-- enable spell check highlighting
+vim.o.spell = true
+vim.o.spelllang= "en_us"
+
 -- Set highlight on search
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
