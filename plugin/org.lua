@@ -25,6 +25,8 @@ require("org-roam").setup({
    }
 })
 
+require('org-bullets').setup()
+
 -- configure blink to allow for orgmode auto completion
 local blink = require("blink-cmp")
 blink.add_source_provider("orgmode", {
