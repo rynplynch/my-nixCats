@@ -14,7 +14,12 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- enable spell check highlighting
 vim.o.spell = true
-vim.o.spelllang= "en_us"
+vim.o.spelllang = "en_us"
+
+-- hide links in orgmode
+vim.o.conceallevel = 2
+-- also hide links while cursor is over them in normal mode
+vim.o.concealcursor = 'n'
 
 -- Set highlight on search
 vim.opt.hlsearch = true
