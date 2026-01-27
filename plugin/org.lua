@@ -13,7 +13,7 @@ vim.treesitter.language.add('org', { path = grammar_path .. '/parser/org.so' })
 vim.treesitter.language.register('org', { 'org' })
 
 require('orgmode').setup({
-   org_agenda_files = '~/orgfiles/**/*',
+   org_agenda_files = { '~/orgfiles/**/*', '~/org_roam_files/daily/' },
    org_default_notes_file = '~/orgfiles/refile.org',
 })
 
