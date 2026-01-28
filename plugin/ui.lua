@@ -6,29 +6,11 @@ vim.cmd.colorscheme("onedark")
 
 require("lualine").setup({
    options = {
-      icons_enabled = false,
       theme = "onedark",
-      component_separators = "|",
-      section_separators = "",
    },
    sections = {
-      lualine_c = {
-         {
-            "filename",
-            path = 1,
-            status = true,
-         },
-      },
-   },
-   inactive_sections = {
-      lualine_b = {
-         {
-            "filename",
-            path = 3,
-            status = true,
-         },
-      },
-      lualine_x = { "filetype" },
+      lualine_y = { "os.date('%a')", 'data', "require'lsp-status'.status()" },
+      lualine_z = { 'os.date("!%I:%M:%S", os.time())', 'data', "require'lsp-status'.status()" }
    },
    tabline = {
       lualine_a = { "buffers" },
