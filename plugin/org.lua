@@ -15,6 +15,7 @@ vim.treesitter.language.register('org', { 'org' })
 require('orgmode').setup({
    org_agenda_files = { '~/orgfiles/**/*', '~/org_roam_files/daily/' },
    org_default_notes_file = '~/orgfiles/refile.org',
+   win_split_mode = { 'float' }
 })
 
 require("org-roam").setup({
