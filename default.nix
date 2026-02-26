@@ -115,7 +115,7 @@ let
 
       org = {
         inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim org-bullets;
-        inherit (pkgs.vimPlugins) org-roam-nvim;
+        inherit (pkgs.vimPlugins) org-roam-nvim sniprun;
       };
 
       general = with pkgs.vimPlugins; [
