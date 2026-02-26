@@ -35,6 +35,7 @@ blink.add_source_provider("orgmode", {
    module = 'orgmode.org.autocompletion.blink',
    fallbacks = { 'buffer' },
 })
+
 blink.add_filetype_source("org", "orgmode")
 
 require('pdf-preview').setup()

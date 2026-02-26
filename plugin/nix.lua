@@ -10,7 +10,6 @@ vim.treesitter.language.register('nix', { 'nix' })
 
 vim.lsp.config('nil_ls', {
    settings = {
-      capabilities = require('blink-cmp').get_lsp_capabilities(),
       ['nil'] = {
          formatting = {
             -- tell nil_ls what command to use when formatting

@@ -23,6 +23,7 @@ vim.keymap.set("n", "<leader>sk", require("telescope.builtin").keymaps)
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags)
 
+
 -- extending neovims builtin autocompletion
 require("blink.cmp").setup({
    keymap = { preset = "default" },
@@ -34,7 +35,6 @@ require("blink.cmp").setup({
 
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.o.winborder = "";
-
 
 -- view markdown files with the Preview command
 require("preview").setup();
@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
       -- check if the language server has formatting functionality
       if client:supports_method('textDocument/formatting') then
-         -- Everytime we write the buffer
+         -- Every time we write the buffer
          vim.api.nvim_create_autocmd('BufWritePre', {
             -- set group equal to the one we created above
             group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
