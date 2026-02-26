@@ -64,6 +64,11 @@ let
         roslyn-ls
       ];
 
+      rust = with pkgs; [
+        rust-analyzer
+        rustc
+      ];
+
       python = with pkgs; [
         python313Packages.python-lsp-server
       ];
@@ -132,6 +137,8 @@ let
 
       csharp = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.c_sharp
+      rust = with pkgs; [
+        vimPlugins.nvim-treesitter-parsers.rust
       ];
 
       org = with pkgs; [

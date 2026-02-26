@@ -60,6 +60,7 @@ let
               csharp = true;
               org = true;
               python = true;
+              rust = true;
             };
           }
         );
