@@ -127,10 +127,6 @@ let
     # not loaded automatically at startup.
     # use with packadd and an autocommand in config to achieve lazy loading
     optionalPlugins = {
-      lua = with pkgs.vimPlugins; [
-        lazydev-nvim
-      ];
-
       nix = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.nix
       ];
