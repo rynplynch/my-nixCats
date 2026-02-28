@@ -133,6 +133,8 @@ let
 
       csharp = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.c_sharp
+      ];
+
       rust = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.rust
       ];
