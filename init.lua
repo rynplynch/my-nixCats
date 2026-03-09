@@ -1,3 +1,10 @@
+-- debug init.lua by running nvim like this 'nvim --cmd "lua init_debug=true"'
+-- if the enviroment variable 'init_debug' is true
+if init_debug then
+   -- launch the lua debugging server and block the current process
+   require "osv".launch({ port = 8086, blocking = true })
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
