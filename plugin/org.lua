@@ -3,10 +3,10 @@ if not nixCats("org") or not nixCats("dev") then
 end
 
 -- configure nix grammar for treesitter
-vim.cmd.packadd("vimplugin-treesitter-grammar-org")
+vim.cmd.packadd("nvim-treesitter-grammar-org")
 
 -- use nixCats utility function to get grammars install location in the nix store
-local grammar_path = nixCats.pawsible('allPlugins.opt.vimplugin-treesitter-grammar-org')
+local grammar_path = nixCats.pawsible('allPlugins.opt.nvim-treesitter-grammar-org')
 
 -- configure neovim's native treesitter functionality
 vim.treesitter.language.add('org', { path = grammar_path .. '/parser/org.so' })

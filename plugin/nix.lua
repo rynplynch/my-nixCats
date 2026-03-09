@@ -3,8 +3,8 @@ if not nixCats("nix") or not nixCats("dev") then
 end
 
 -- configure nix grammar for treesitter
-vim.cmd.packadd("vimplugin-treesitter-grammar-nix")
-local grammar_path = nixCats.pawsible('allPlugins.opt.vimplugin-treesitter-grammar-nix')
+vim.cmd.packadd("nvim-treesitter-grammar-nix")
+local grammar_path = nixCats.pawsible('allPlugins.opt.nvim-treesitter-grammar-nix')
 vim.treesitter.language.add('nix', { path = grammar_path .. '/parser/nix.so' })
 vim.treesitter.language.register('nix', { 'nix' })
 
