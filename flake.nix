@@ -21,6 +21,10 @@
       url = "github:nvim-orgmode/orgmode";
       flake = false;
     };
+    orgroam-nvim = {
+      url = "github:chipsenkbeil/org-roam.nvim";
+      flake = false;
+    };
     org-bullets = {
       url = "github:nvim-orgmode/org-bullets.nvim";
       flake = false;

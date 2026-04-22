@@ -24,6 +24,7 @@ let
       plugins-osv-nvim = inputs.osv-nvim;
       plugins-org-bullets = inputs.org-bullets;
       plugins-orgmode-nvim = inputs.orgmode-nvim;
+      plugins-orgroam-nvim = inputs.orgroam-nvim;
       plugins-pdfpreview-nvim = inputs.pdfpreview-nvim;
     })
     # when other people mess up their overlays by wrapping them with system,
@@ -114,8 +115,8 @@ let
       };
 
       org = {
-        inherit (pkgs.neovimPlugins) orgmode-nvim pdfpreview-nvim org-bullets;
-        inherit (pkgs.vimPlugins) org-roam-nvim sniprun;
+        inherit (pkgs.neovimPlugins) orgroam-nvim orgmode-nvim pdfpreview-nvim org-bullets;
+        inherit (pkgs.vimPlugins) sniprun;
       };
 
       general = with pkgs.vimPlugins; [
