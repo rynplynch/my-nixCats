@@ -99,16 +99,32 @@
     "orgmode-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1759555282,
-        "narHash": "sha256-pdXipfJ9E+9GEx4iWLVPDIpRWBakeMRRuKXJTN7uBuc=",
+        "lastModified": 1777395671,
+        "narHash": "sha256-cw8VqS4alk4j1Ch8qHz8j3ME1VKwWe0Jw+2BbYl1u50=",
         "owner": "nvim-orgmode",
         "repo": "orgmode",
-        "rev": "03777caca5c2df4c5b2067734b7829e9df07a423",
+        "rev": "2ed4742a68555d938919f8b2fe78e905b983a838",
         "type": "github"
       },
       "original": {
         "owner": "nvim-orgmode",
         "repo": "orgmode",
+        "type": "github"
+      }
+    },
+    "orgroam-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772769962,
+        "narHash": "sha256-K0OnM7PdTT4ypL0IAVWb9R83SDIhgko8j4KBzIkJJNM=",
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
+        "rev": "6c21c867b178a80fb4ad243c445545e5583d8232",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
         "type": "github"
       }
     },
@@ -153,6 +169,7 @@
         "org-bullets": "org-bullets",
         "org-grammar": "org-grammar",
         "orgmode-nvim": "orgmode-nvim",
+        "orgroam-nvim": "orgroam-nvim",
         "osv-nvim": "osv-nvim",
         "pdfpreview-nvim": "pdfpreview-nvim"
       }
