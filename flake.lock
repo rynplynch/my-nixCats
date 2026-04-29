@@ -66,11 +66,11 @@
     "org-bullets": {
       "flake": false,
       "locked": {
-        "lastModified": 1737617809,
-        "narHash": "sha256-/l8IfvVSPK7pt3Or39+uenryTM5aBvyJZX5trKNh0X0=",
+        "lastModified": 1774343634,
+        "narHash": "sha256-Tgeqr/Zd1hJXXaln4XWGS5aZqypnpfNxgO/+pQVk7jg=",
         "owner": "nvim-orgmode",
         "repo": "org-bullets.nvim",
-        "rev": "21437cfa99c70f2c18977bffd423f912a7b832ea",
+        "rev": "503fe053550879cc202086a40454e46a87c41ddb",
         "type": "github"
       },
       "original": {
@@ -82,11 +82,11 @@
     "org-grammar": {
       "flake": false,
       "locked": {
-        "lastModified": 1747036335,
-        "narHash": "sha256-k1g5+iyJvVWKOuAkFNaaKl42Xmmz9BN+vT0+IQ/4RQI=",
+        "lastModified": 1773255960,
+        "narHash": "sha256-Ok4BlEshQSAxxIdqPWgYx82ksqm6XJ5G9oXpD94Oozg=",
         "owner": "nvim-orgmode",
         "repo": "tree-sitter-org",
-        "rev": "a146dd51d52e0eb5a736e427cd244d93375fbed9",
+        "rev": "36331066efd6be52992b46ee4f57b8cdd7a7e944",
         "type": "github"
       },
       "original": {
