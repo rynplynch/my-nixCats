@@ -1,104 +1,69 @@
 {
-  description = "An over-engineered Hello World in C";
-
-  # Nixpkgs / NixOS version to use.
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
-    neogit = {
-      url = "github:NeogitOrg/neogit";
-      flake = false;
-    };
-    diffview-nvim = {
-      url = "github:sindrets/diffview.nvim";
-      flake = false;
-    };
-    osv-nvim = {
-      url = "github:jbyuki/one-small-step-for-vimkind";
-      flake = false;
-    };
-    orgmode-nvim = {
-      url = "github:nvim-orgmode/orgmode";
-      flake = false;
-    };
-    orgroam-nvim = {
-      url = "github:chipsenkbeil/org-roam.nvim";
-      flake = false;
-    };
-    org-bullets = {
-      url = "github:nvim-orgmode/org-bullets.nvim";
-      flake = false;
-    };
-    org-grammar = {
-      url = "github:nvim-orgmode/tree-sitter-org/next";
-      flake = false;
-    };
-    pdfpreview-nvim = {
-      url = "github:franco-ruggeri/pdf-preview.nvim";
-      flake = false;
-    };
+  description = "Flake exporting a configured neovim package";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.wrappers.url = "github:BirdeeHub/nix-wrapper-modules";
+  inputs.wrappers.inputs.nixpkgs.follows = "nixpkgs";
+  # Demo on fetching plugins from outside nixpkgs
+  inputs.plugins-lze = {
+    url = "github:BirdeeHub/lze";
+    flake = false;
+  };
+  # These 2 are already in nixpkgs, however this ensures you always fetch the most up to date version!
+  inputs.plugins-lzextras = {
+    url = "github:BirdeeHub/lzextras";
+    flake = false;
   };
   outputs =
-    { self
-    , nixpkgs
-    , nixCats
-    , ...
+    {
+      self,
+      nixpkgs,
+      wrappers,
+      ...
     }@inputs:
     let
-
-      # to work with older version of flakes
-      lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
-
-      # Generate a user-friendly version number.
-      version = builtins.substring 0 8 lastModifiedDate;
-
-      # System types to support.
-      supportedSystems = [
-        "x86_64-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
-
-      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-      # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (
-        system:
-        import nixpkgs {
-          inherit system;
-          overlays = [ self.overlay ];
-        }
-      );
-
-      nixCats = import ./default.nix { inherit inputs; };
-
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+      module = nixpkgs.lib.modules.importApply ./module.nix inputs;
+      wrapper = wrappers.lib.evalModule module;
     in
-
+    # for demonstration purposes, we will set up all the outputs.
     {
-
-      # A Nixpkgs overlay.
-      overlay = final: prev: { };
-
-      # Provide some binary packages for selected system types.
-      # The default package for 'nix build'. This makes sense if the
-      # flake provides only one package or there is a clear "main"
-      # package.
+      wrapperModules = {
+        neovim = module;
+        default = self.wrapperModules.neovim;
+      };
+      wrappers = {
+        neovim = wrapper.config;
+        default = self.wrappers.neovim;
+      };
+      overlays = {
+        neovim = final: prev: { neovim = self.wrappers.neovim.wrap { pkgs = final; }; };
+        default = self.overlays.neovim;
+      };
       packages = forAllSystems (
-        system: {
-          ryanl-editor = nixCats.packages.${system}.default;
-          default = self.packages.${system}.ryanl-editor;
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          neovim = self.wrappers.neovim.wrap { inherit pkgs; };
+          default = self.packages.${system}.neovim;
         }
       );
-
-      devShells = forAllSystems (system: {
-        default = import ./shell.nix {
-          inherit self system;
-          pkgs = nixpkgsFor.${system};
+      # home manager and nixos modules
+      # `wrappers.neovim.enable = true`
+      # You can set any of the options.
+      # But that is how you enable it.
+      nixosModules = {
+        default = self.nixosModules.neovim;
+        neovim = wrappers.lib.getInstallModule {
+          name = "neovim";
+          value = module;
         };
-      });
-    } // {
-      nixosModules.default = nixCats.nixosModules.default;
+      };
+      homeModules = {
+        default = self.homeModules.neovim;
+        # they produce generically importable modules
+        neovim = self.nixosModules.neovim;
+      };
     };
 }
