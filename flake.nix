@@ -22,7 +22,7 @@
     }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
-      module = nixpkgs.lib.modules.importApply ./module.nix inputs;
+      module = nixpkgs.lib.modules.importApply ./nix inputs;
       wrapper = wrappers.lib.evalModule module;
     in
     # for demonstration purposes, we will set up all the outputs.
