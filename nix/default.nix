@@ -8,7 +8,10 @@ inputs:
   ...
 }:
 {
-  imports = [ wlib.wrapperModules.neovim ];
+  imports = [
+        wlib.wrapperModules.neovim
+        ./general.nix
+    ];
   # NOTE: see the tips and tricks section or the bottom of this file + flake inputs to understand this value
   options.nvim-lib.neovimPlugins = lib.mkOption {
     readOnly = true;

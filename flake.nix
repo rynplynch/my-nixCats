@@ -13,6 +13,10 @@
     url = "github:BirdeeHub/lzextras";
     flake = false;
   };
+    inputs.plugins-neogit = {
+      url = "github:NeogitOrg/neogit";
+      flake = false;
+    };
   outputs =
     {
       self,
