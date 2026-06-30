@@ -45,10 +45,25 @@
           pkgs = import nixpkgs { inherit system; };
         in
         {
-          neovim = self.wrappers.neovim.wrap { inherit pkgs; };
+          neovim = self.wrappers.neovim.wrap {
+                        inherit pkgs;
+              # choose a directory for your config.
+              config.settings.config_directory = ./.;
+            };
           default = self.packages.${system}.neovim;
         }
       );
+
+      devShells = forAllSystems (
+                system:
+                let
+          pkgs = import nixpkgs { inherit system; };
+                        neovim = self.wrappers.neovim.wrap{ inherit pkgs;};
+                    in
+                {
+        default = import ./shell.nix {
+          inherit pkgs neovim;};
+                    });
       # home manager and nixos modules
       # `wrappers.neovim.enable = true`
       # You can set any of the options.
