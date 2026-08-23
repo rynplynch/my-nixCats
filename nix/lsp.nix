@@ -6,8 +6,16 @@
 , ...
 }:
 {
+  options.settings.lsp = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+  };
+
   config.specs.lsp = {
-    data = null;
+    enable = config.settings.lsp.enable;
+    data = pkgs.vimPlugins.nvim-lspconfig;
     config = ''
       -- shared configuration for all language servers
       -- listen for 'LspAttach' event, execute this before server attaches
@@ -36,12 +44,14 @@
                print("The language server does not support formatting " .. client.id)
             end
             if client:supports_method('textDocument/completion') then
+            print("completion enabled")
                vim.lsp.completion.enable(true, client.id, args.buf, {
                   autotrigger = true,
                   convert = function(item)
                      return { abbr = item.label:gsub('%b()', "") }
                   end
                })
+               -- vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
             else
                print("The language server does not support completion " .. client.id)
             end
@@ -50,13 +60,99 @@
     '';
   };
 
+
+
+  config.specs.blink_cmp = {
+    enable = config.settings.lsp.enable;
+    data = with pkgs.vimPlugins; [ blink-compat blink-cmp colorful-menu-nvim ];
+    config = ''
+      require("blink.cmp").setup({
+         -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+         -- See :h blink-cmp-config-keymap for configuring keymaps
+         keymap =  {
+           preset = 'default',
+         },
+         cmdline = {
+           enabled = true,
+           completion = {
+             menu = {
+               auto_show = true,
+             },
+           },
+           sources = function()
+             local type = vim.fn.getcmdtype()
+             -- Search forward and backward
+             if type == '/' or type == '?' then return { 'buffer' } end
+             -- Commands
+             if type == ':' or type == '@' then return { 'cmdline', 'cmp_cmdline' } end
+             return {}
+           end,
+         },
+         fuzzy = {
+           sorts = {
+             'exact',
+             -- defaults
+             'score',
+             'sort_text',
+           },
+         },
+         signature = {
+           enabled = true,
+           window = {
+             show_documentation = true,
+           },
+         },
+         completion = {
+           menu = {
+             draw = {
+               treesitter = { 'lsp' },
+               components = {
+                 label = {
+                   text = function(ctx)
+                     return require("colorful-menu").blink_components_text(ctx)
+                   end,
+                   highlight = function(ctx)
+                     return require("colorful-menu").blink_components_highlight(ctx)
+                   end,
+                 },
+               },
+             },
+           },
+           documentation = {
+             auto_show = true,
+           },
+         },
+         sources = {
+           default = { 'lsp', 'path', 'buffer', 'omni' },
+           providers = {
+             path = {
+               score_offset = 50,
+             },
+             lsp = {
+               score_offset = 40,
+             },
+             cmp_cmdline = {
+               name = 'cmp_cmdline',
+               module = 'blink.compat.source',
+               score_offset = -100,
+               opts = {
+                 cmp_name = 'cmdline',
+               },
+             },
+           },
+         },
+      })
+    '';
+  };
+
+
+
+
   # You can use the before and after fields to run them before or after other specs or spec of lists of specs
   config.specs.lua = {
-    # after = [ "lsp" ];
+    after = [ "lsp" ];
+    enable = config.settings.lsp.enable;
     data = null;
-    # data = with pkgs.vimPlugins; [
-    #   lazydev-nvim
-    # ];
     runtimePkgs = with pkgs; [
       lua-language-server
       stylua
@@ -92,6 +188,7 @@
     #   # get_configs = lib.generators.mkLuaInline # lua
     #   # ''function(type, path) return [[import ${./nixd.nix} "${pkgs.stdenv.hostPlatform.system}" "]] .. type .. [[" ]] .. (path or "./.") end'';
     # };
+    enable = config.settings.lsp.enable;
     config = ''
        -- configure nix grammar for treesitter
        -- vim.cmd.packadd("nvim-treesitter-grammar-nix")
@@ -129,11 +226,33 @@
     ];
   };
 
+  config.specs.csharp = {
+    enable = config.settings.lsp.enable;
+    config = ''
+      --  vim.lsp.config('roslyn_ls', {
+      --     on_attach = function(bufnr, client_id)
+      --        vim.keymap.set("n", "<C-e>c", function()
+      --           local user_input = vim.fn.input({ prompt = "Enter input: ", completion = "dir_in_path" })
+      --           vim.api.nvim_cmd({ cmd = "te", args = { "dotnet run --project " .. user_input } }, {})
+      --        end, bufnr)
+      --     end
+      --  })
+
+       vim.lsp.enable('roslyn_ls')
+    '';
+    data = with pkgs; [
+      vimPlugins.nvim-treesitter-parsers.c_sharp
+    ];
+    runtimePkgs = with pkgs; [
+      roslyn-ls
+    ];
+  };
+
   config.specs.orgmode = {
+
+    enable = config.settings.lsp.enable;
     data = with config.nvim-lib.neovimPlugins; [
-      # { data = orgmode; }
       orgmode
-      # org-grammar
       orgroam-nvim
       org-bullets
       config.nvim-lib.grammars.org
@@ -156,16 +275,6 @@
       })
 
       require('org-bullets').setup()
-
-      -- -- configure blink to allow for orgmode auto completion
-      -- local blink = require("blink-cmp")
-      -- blink.add_source_provider("orgmode", {
-      --    name = 'Orgmode',
-      --    module = 'orgmode.org.autocompletion.blink',
-      --    fallbacks = { 'buffer' },
-      -- })
-
-      -- blink.add_filetype_source("org", "orgmode")
     '';
   };
 }

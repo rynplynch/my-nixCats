@@ -1,69 +1,87 @@
 {
   "nodes": {
-    "diffview-nvim": {
+    "grammars-org": {
       "flake": false,
       "locked": {
-        "lastModified": 1718279802,
-        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
-        "owner": "sindrets",
-        "repo": "diffview.nvim",
-        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+        "lastModified": 1778003548,
+        "narHash": "sha256-76ImC8GMW+yAKG++AHryUi+MYTmtJ5ogygC+bgNMErA=",
+        "owner": "nvim-orgmode",
+        "repo": "tree-sitter-org",
+        "rev": "f15da8e8fcb3a2d764c7092ae6ba4dc87d3b3093",
         "type": "github"
       },
       "original": {
-        "owner": "sindrets",
-        "repo": "diffview.nvim",
-        "type": "github"
-      }
-    },
-    "neogit": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763456687,
-        "narHash": "sha256-A6KlPgqOwoKswuFiOFah1peCLFNi4BSOUVeeQ1Aw+uI=",
-        "owner": "NeogitOrg",
-        "repo": "neogit",
-        "rev": "4ba620addbeeca2594c794b151e611c037973480",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NeogitOrg",
-        "repo": "neogit",
-        "type": "github"
-      }
-    },
-    "nixCats": {
-      "locked": {
-        "lastModified": 1774835836,
-        "narHash": "sha256-6ok7iv/9R82vl6MYe3Lwyyb6S5bmW2PxEZtmjzlqyPs=",
-        "owner": "BirdeeHub",
-        "repo": "nixCats-nvim",
-        "rev": "ebb9f279a55ca60ff4e37e4accf6518dc627aa8d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BirdeeHub",
-        "repo": "nixCats-nvim",
+        "owner": "nvim-orgmode",
+        "ref": "next",
+        "repo": "tree-sitter-org",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1772773019,
-        "narHash": "sha256-E1bxHxNKfDoQUuvriG71+f+s/NT0qWkImXsYZNFFfCs=",
+        "lastModified": 1780930886,
+        "narHash": "sha256-rppURzHviaQN131F+nLiLdGfcb0uCd9gGP0E5+iw9MI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aca4d95fce4914b3892661bcb80b8087293536c6",
+        "rev": "8c3cede7ddc26bd659d2d383b5610efbd2c7a16e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
-    "org-bullets": {
+    "plugins-lze": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780516349,
+        "narHash": "sha256-AMOXr1DqbnPXbEdkSMnOOr2mpfo6rZbg2vw2A1zFoII=",
+        "owner": "BirdeeHub",
+        "repo": "lze",
+        "rev": "177bba953cf422e4b8e4fa6f9b0a603b135e169e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "lze",
+        "type": "github"
+      }
+    },
+    "plugins-lzextras": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780516431,
+        "narHash": "sha256-aPZFLIF5RpE584X4RaJkRpah5bNi3yRrF3dzy1/PTW0=",
+        "owner": "BirdeeHub",
+        "repo": "lzextras",
+        "rev": "780f189a44a8d6ee4027146488f83315addb7262",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "lzextras",
+        "type": "github"
+      }
+    },
+    "plugins-neogit": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782208277,
+        "narHash": "sha256-WTnQnnOP98ZGnVRoQyhai0Bot4kQi6tGjWE7t4gSwdc=",
+        "owner": "NeogitOrg",
+        "repo": "neogit",
+        "rev": "43ea1a0854052e583f647e0b35879f0158a70a78",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NeogitOrg",
+        "repo": "neogit",
+        "type": "github"
+      }
+    },
+    "plugins-org-bullets": {
       "flake": false,
       "locked": {
         "lastModified": 1774343634,
@@ -79,31 +97,14 @@
         "type": "github"
       }
     },
-    "org-grammar": {
+    "plugins-orgmode": {
       "flake": false,
       "locked": {
-        "lastModified": 1773255960,
-        "narHash": "sha256-Ok4BlEshQSAxxIdqPWgYx82ksqm6XJ5G9oXpD94Oozg=",
-        "owner": "nvim-orgmode",
-        "repo": "tree-sitter-org",
-        "rev": "36331066efd6be52992b46ee4f57b8cdd7a7e944",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-orgmode",
-        "ref": "next",
-        "repo": "tree-sitter-org",
-        "type": "github"
-      }
-    },
-    "orgmode-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1777395671,
-        "narHash": "sha256-cw8VqS4alk4j1Ch8qHz8j3ME1VKwWe0Jw+2BbYl1u50=",
+        "lastModified": 1782725846,
+        "narHash": "sha256-6eaqKtmChXU6KVSO+RrasM63sEUAz4km12ChNegTTN8=",
         "owner": "nvim-orgmode",
         "repo": "orgmode",
-        "rev": "2ed4742a68555d938919f8b2fe78e905b983a838",
+        "rev": "f32a06d4b5399dad8bf0478c772bf6c513f02dcf",
         "type": "github"
       },
       "original": {
@@ -112,66 +113,53 @@
         "type": "github"
       }
     },
-    "orgroam-nvim": {
+    "plugins-orgroam-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1772769962,
-        "narHash": "sha256-K0OnM7PdTT4ypL0IAVWb9R83SDIhgko8j4KBzIkJJNM=",
+        "lastModified": 1780265111,
+        "narHash": "sha256-dAFiQFmu9WgE2Wao3z4yFJgTEhHV/sRTkkq8uZk5EO0=",
         "owner": "chipsenkbeil",
         "repo": "org-roam.nvim",
-        "rev": "6c21c867b178a80fb4ad243c445545e5583d8232",
+        "rev": "0240378c92eb0c9d6bc4ccbc8a6046e3c3d02ece",
         "type": "github"
       },
       "original": {
         "owner": "chipsenkbeil",
         "repo": "org-roam.nvim",
-        "type": "github"
-      }
-    },
-    "osv-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752955441,
-        "narHash": "sha256-aDqBD24KvFT1JxlAVnie7RRIwOlboU8jmKhHfhOh+Ns=",
-        "owner": "jbyuki",
-        "repo": "one-small-step-for-vimkind",
-        "rev": "91b4e0fb0d640def73812aceb22dafb99261dd67",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jbyuki",
-        "repo": "one-small-step-for-vimkind",
-        "type": "github"
-      }
-    },
-    "pdfpreview-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752362857,
-        "narHash": "sha256-t8zJL9MYjUTsNdKlGcPrweR6l/hBKZ7We9NGYEmevL8=",
-        "owner": "franco-ruggeri",
-        "repo": "pdf-preview.nvim",
-        "rev": "640c294222f815f6ec773dba730994fd6d817df0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "franco-ruggeri",
-        "repo": "pdf-preview.nvim",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "diffview-nvim": "diffview-nvim",
-        "neogit": "neogit",
-        "nixCats": "nixCats",
+        "grammars-org": "grammars-org",
         "nixpkgs": "nixpkgs",
-        "org-bullets": "org-bullets",
-        "org-grammar": "org-grammar",
-        "orgmode-nvim": "orgmode-nvim",
-        "orgroam-nvim": "orgroam-nvim",
-        "osv-nvim": "osv-nvim",
-        "pdfpreview-nvim": "pdfpreview-nvim"
+        "plugins-lze": "plugins-lze",
+        "plugins-lzextras": "plugins-lzextras",
+        "plugins-neogit": "plugins-neogit",
+        "plugins-org-bullets": "plugins-org-bullets",
+        "plugins-orgmode": "plugins-orgmode",
+        "plugins-orgroam-nvim": "plugins-orgroam-nvim",
+        "wrappers": "wrappers"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782135443,
+        "narHash": "sha256-vAmbArdCyjqpVW+37aCy/PMBOLIqukUXLQuEKLwUhA4=",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "rev": "6e7f66fa2cdf4d63162580b438f7fcf87c28a46f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
       }
     }
   },
