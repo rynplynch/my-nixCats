@@ -70,14 +70,14 @@
         system:
         let
           pkgs = import nixpkgs { inherit system; };
+          neovim = self.wrappers.neovim.wrap { inherit pkgs; };
         in
         {
-          neovim = self.wrappers.neovim.wrap {
-            inherit pkgs;
+          neovim = neovim.wrap {
             # choose a directory for your config.
             config.settings.config_directory = ./.;
           };
-          default = self.packages.${system}.neovim;
+          default = neovim;
         }
       );
 
