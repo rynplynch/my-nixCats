@@ -98,7 +98,7 @@
         neovim = wrappers.lib.getInstallModule {
           name = "neovim";
           value = module;
-            config.settings.config_directory = ./.;
+          settings.config_directory = ./.;
         };
       };
       homeModules = {
