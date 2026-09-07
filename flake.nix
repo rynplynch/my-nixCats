@@ -73,10 +73,7 @@
           neovim = self.wrappers.neovim.wrap { inherit pkgs; };
         in
         {
-          neovim = neovim.wrap {
-            # choose a directory for your config.
-            config.settings.config_directory = ./.;
-          };
+          neovim = neovim;
           default = neovim;
         }
       );
@@ -98,7 +95,6 @@
         neovim = wrappers.lib.getInstallModule {
           name = "neovim";
           value = module;
-          settings.config_directory = ./.;
         };
       };
       homeModules = {
