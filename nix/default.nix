@@ -13,7 +13,7 @@ inputs:
     ./lsp.nix
   ];
 
-  config.settings.config_directory = lib.generators.mkLuaInline "vim.uv.cwd()";
+  config.settings.config_directory = ./.;
 
   options.nvim-lib.grammars = lib.mkOption {
     readOnly = true;
