@@ -13,7 +13,7 @@ inputs:
     ./lsp.nix
   ];
 
-  config.settings.config_directory = ./.;
+  config.settings.config_directory = ../.;
 
   options.nvim-lib.grammars = lib.mkOption {
     readOnly = true;
