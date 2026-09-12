@@ -9,11 +9,11 @@ inputs:
 {
   imports = [
     wlib.wrapperModules.neovim
-    ./general.nix
-    ./lsp.nix
+    ./modules/general.nix
+    ./modules/lsp.nix
   ];
 
-  config.settings.config_directory = ../.;
+  config.settings.config_directory = ./.;
 
   options.nvim-lib.grammars = lib.mkOption {
     readOnly = true;
