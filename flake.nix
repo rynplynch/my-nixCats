@@ -41,23 +41,10 @@
     }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
-      #module = nixpkgs.lib.modules.importApply ./nix inputs;
       module = nixpkgs.lib.modules.importApply ./. inputs;
       wrapper = wrappers.lib.evalModule module;
     in
-    # for demonstration purposes, we will set up all the outputs.
     {
-      wrapperModules = {
-        # neovim = module;
-        neovim = {
-          imports = [ (import ./nix inputs) ];
-          # I will deal with this next time I have to do python.# lsp and stuff breaks all the time, driving me nuts
-          # config.specs.python = _: { enable = false; };
-          # disable roc for now because I haven't been using it# and it builds the lsp from source which is slow
-          # config.specs.roc = _: { enable = false; };
-        };
-        default = self.wrapperModules.neovim;
-      };
       wrappers = {
         neovim = wrapper.config;
         default = self.wrappers.neovim;
@@ -86,10 +73,7 @@
         {
           default = import ./shell.nix { inherit pkgs neovim; };
         });
-      # home manager and nixos modules
-      # `wrappers.neovim.enable = true`
-      # You can set any of the options.
-      # But that is how you enable it.
+
       nixosModules = {
         default = self.nixosModules.neovim;
         neovim = wrappers.lib.getInstallModule {
@@ -97,6 +81,7 @@
           value = module;
         };
       };
+
       homeModules = {
         default = self.homeModules.neovim;
         # they produce generically importable modules
