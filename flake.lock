@@ -33,38 +33,6 @@
         "type": "github"
       }
     },
-    "plugins-lze": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780516349,
-        "narHash": "sha256-AMOXr1DqbnPXbEdkSMnOOr2mpfo6rZbg2vw2A1zFoII=",
-        "owner": "BirdeeHub",
-        "repo": "lze",
-        "rev": "177bba953cf422e4b8e4fa6f9b0a603b135e169e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BirdeeHub",
-        "repo": "lze",
-        "type": "github"
-      }
-    },
-    "plugins-lzextras": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780516431,
-        "narHash": "sha256-aPZFLIF5RpE584X4RaJkRpah5bNi3yRrF3dzy1/PTW0=",
-        "owner": "BirdeeHub",
-        "repo": "lzextras",
-        "rev": "780f189a44a8d6ee4027146488f83315addb7262",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BirdeeHub",
-        "repo": "lzextras",
-        "type": "github"
-      }
-    },
     "plugins-neogit": {
       "flake": false,
       "locked": {
@@ -133,8 +101,6 @@
       "inputs": {
         "grammars-org": "grammars-org",
         "nixpkgs": "nixpkgs",
-        "plugins-lze": "plugins-lze",
-        "plugins-lzextras": "plugins-lzextras",
         "plugins-neogit": "plugins-neogit",
         "plugins-org-bullets": "plugins-org-bullets",
         "plugins-orgmode": "plugins-orgmode",
@@ -149,15 +115,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1782135443,
-        "narHash": "sha256-vAmbArdCyjqpVW+37aCy/PMBOLIqukUXLQuEKLwUhA4=",
-        "owner": "BirdeeHub",
+        "lastModified": 1788981141,
+        "narHash": "sha256-7xWS16u13YGlRNKWaAPzRbEyh4OLOXJe31k7h4AnXNU=",
+        "owner": "nix-community",
         "repo": "nix-wrapper-modules",
-        "rev": "6e7f66fa2cdf4d63162580b438f7fcf87c28a46f",
+        "rev": "1db3c116a6aa61823f8d8f3c47c306846428fc54",
         "type": "github"
       },
       "original": {
-        "owner": "BirdeeHub",
+        "owner": "nix-community",
         "repo": "nix-wrapper-modules",
         "type": "github"
       }
