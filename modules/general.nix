@@ -67,7 +67,7 @@
 
   config.specs.moonfly-colors = {
     enable = if (config.settings.general.enable || config.settings.general.moonfly-colors) then true else false;
-    data = pkgs.vimPlugins.vim-moonfly-colors;
+    data = config.nvim-lib.neovimPlugins.moonfly-colors;
     config = builtins.readFile ../configs/general-moonfly-colors.lua;
   };
 }

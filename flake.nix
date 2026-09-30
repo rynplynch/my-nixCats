@@ -19,6 +19,10 @@
     url = "github:nvim-orgmode/org-bullets.nvim";
     flake = false;
   };
+  inputs.plugins-moonfly-colors = {
+    url = "github:bluz71/vim-moonfly-colors";
+    flake = false;
+  };
   inputs.grammars-org = {
     url = "github:nvim-orgmode/tree-sitter-org/next";
     flake = false;
